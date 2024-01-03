@@ -12,7 +12,7 @@ const Menu = () => {
                     Inicio
                 </MenuLink>
                 <MenuLink to="/sobremim">
-                    Sobre Mim
+                    Informações
                 </MenuLink>
 
             </nav>
