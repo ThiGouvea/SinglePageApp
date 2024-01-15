@@ -16,7 +16,7 @@ const Login = () => {
         setForm({...form, [event.target.name]: event.target.value})
     }
     return (
-        <form>
+        <form className={styles.login}>
             <Input 
                 name='email' 
                 type="email" 

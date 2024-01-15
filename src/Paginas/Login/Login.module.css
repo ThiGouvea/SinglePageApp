@@ -1,3 +1,13 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    margin: 5rem;
+    align-items: center;
+}
+
 .submit {
+    cursor: pointer;
     font-size: 15px;
+    border-radius: 8px;
+    padding: 0.3rem;
 }
