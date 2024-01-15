@@ -1,21 +1,43 @@
 import Input from "Componentes/Input"
 import styles from "./Login.module.css"
+import { useState } from "react";
 
 
 
 const Login = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [form, setForm] = useState([])
     
-    const onLogin = () => {
-        console.log("Usuário:", username);
-        console.log("Senha:", password);
+    const onLogin = async (event) => {
+        event.preventDefault();
+        console.log("Usuário:", form);
       };
+
+    const HandleOnChange = (event) => {
+        setForm({...form, [event.target.name]: event.target.value})
+    }
     return (
         <form>
-            <Input type="text" required placeholder={"Insira seu nome"} />
-            <Input type="password" required placeholder="Insira a senha" />
-            <button type="submit" onSubmit={onLogin} className={styles.submit}>Entrar</button>
+            <Input 
+                name='email' 
+                type="email" 
+                required 
+                placeholder={"Insira seu email"} 
+                onChange={HandleOnChange} />
+
+            <Input 
+                name='password' 
+                type="password" 
+                required 
+                placeholder="Insira a senha"
+                onChange={HandleOnChange} />
+
+            <button 
+                type="submit" 
+                onClick={onLogin} 
+                className={styles.submit} 
+                text='Entrar'
+                >Entrar
+            </button>
         </form>
     )
 }

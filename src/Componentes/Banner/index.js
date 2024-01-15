@@ -13,18 +13,6 @@ const Banner = () => {
                     Boas vindas aos eventos
                 </p>
             </div>
-            <div className={styles.imagens}>
-                <img 
-                    className={styles.circuloColorido}
-                    src={circuloColorido} 
-                    aria-hidden={true}
-                />
-                {/* <img 
-                    className={styles.minhaFoto} 
-                    src={minhaFoto}
-                    alt='foto'
-                    /> */}
-            </div>
         </div>
     )
 }

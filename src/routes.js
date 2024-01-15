@@ -15,7 +15,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<PaginaPadrao />}>
           <Route index element={<Inicio />} />
-          {/* <Route path="sobremim" element={<SobreMim />} /> */}
+          <Route path="sobremim" element={<SobreMim />} />
           <Route path="login" element={<Login />} />
         </Route>
         <Route path="/posts/:id" element={<Post />} />
