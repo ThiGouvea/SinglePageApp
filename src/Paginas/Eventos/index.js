@@ -2,7 +2,7 @@ import styles from "./Inicio.module.css";
 import posts from "assets/json/posts.json"
 import PostCard from "Componentes/PostCard";
 
-const Inicio = () => {
+const Eventos = () => {
     return (
         <ul className={styles.posts}>
             {posts.map(post => (
@@ -15,4 +15,4 @@ const Inicio = () => {
     )
 }
 
-export default Inicio
+export default Eventos

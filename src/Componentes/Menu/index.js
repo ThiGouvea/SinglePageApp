@@ -8,8 +8,8 @@ const Menu = () => {
                 <MenuLink to="/login">
                     Login
                 </MenuLink>
-                <MenuLink to="/">
-                    Inicio
+                <MenuLink to="/eventos">
+                    Eventos
                 </MenuLink>
                 <MenuLink to="/sobremim">
                     Informações

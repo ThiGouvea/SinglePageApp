@@ -1,5 +1,5 @@
 .banner {
-    padding: 0.5rem 7.5rem 2rem 4rem;
+    padding: 1rem 10rem;
     background-color: var(--azul-escuro);
     color: var(--branco);
     display: grid;
@@ -9,15 +9,15 @@
 .titulo {
     font-family: var(--fonte-secundaria);
     font-size: 4rem;
-    margin-top: 4.875rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .paragrafo {
     font-family: var(--fonte-secundaria);
     font-size: 1.5rem;
     line-height: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .imagens {
