@@ -4,10 +4,10 @@ import PostModelo from "Componentes/PostModelo"
 const SobreMim = () => {
     return (
         <PostModelo
-            titulo="Sobre mim..."
+            titulo="Algo"
         >
             <h3 className={styles.subtitulo}>
-                Ola eu sou o Thiago
+                Algo
             </h3>
 
             <p className={styles.paragrafo}>paragrafo</p>

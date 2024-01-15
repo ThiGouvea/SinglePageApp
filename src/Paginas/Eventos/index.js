@@ -10,7 +10,6 @@ const Eventos = () => {
                     <PostCard post={post}/>
                 </li>
             ))}
-
         </ul>
     )
 }

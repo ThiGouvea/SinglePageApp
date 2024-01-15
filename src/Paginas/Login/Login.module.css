@@ -7,7 +7,13 @@
 
 .submit {
     cursor: pointer;
-    font-size: 15px;
-    border-radius: 8px;
-    padding: 0.3rem;
+    border-radius: 24px;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.125rem;
+    background-color: var(--azul-medio);
+    color: var(--branco);
+    border: 3px solid var(--azul-medio);
+    transition: 0.2s
 }
