@@ -1,0 +1,47 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin-right: 30rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.options {
+    display: flex;
+    font-size: 1.125rem;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.nomesOptions {
+    margin: 0;
+    font-size: 1.125rem;
+    margin-right: 2rem;
+}
+
+.comboBox {
+    padding: 0.5rem;
+    border-radius: 24px;
+    font-size: 1.125rem;
+    line-height: 1.125rem;
+    background-color: var(--azul-medio);
+    color: var(--branco);
+    border: 3px solid var(--azul-medio);
+    height: 3rem;
+
+}
+
+.submit {
+    cursor: pointer;
+    border-radius: 24px;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.125rem;
+    background-color: var(--azul-medio);
+    color: var(--branco);
+    border: 3px solid var(--azul-medio);
+    transition: 0.2s
+}

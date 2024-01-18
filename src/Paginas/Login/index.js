@@ -2,7 +2,6 @@ import Input from "Componentes/Input"
 import styles from "./Login.module.css"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from "react";
-import UserService from '../../Services/UserService'
 import axios from 'axios';
 
 
@@ -11,7 +10,6 @@ const api = axios.create({
 });
 
 const Login = () => {
-    const userService = new UserService();
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
     const navigate = useNavigate()
@@ -20,11 +18,14 @@ const Login = () => {
         event.preventDefault();
         try {
             setLoading(true)
-            const responses = await axios.get('http://localhost:8080/relatorio_inscritos_por_atividade/1');
-            console.log('response do Login', responses)
-            //const response = await UserService.login(form);
+            // const responses = await axios.get('http://localhost:8080/relatorio_inscritos_por_atividade/1');
+            // console.log('response do Login', responses)
+            // const response = await UserService.login(form);
+            const {response} = await axios.post('http://localhost:8080/login', form)
+
+            console.log(response)
             
-            if (responses === true) {
+            if (response === true) {
               alert('usuário Logado com Sucesso')
               navigate('/eventos')
             }
