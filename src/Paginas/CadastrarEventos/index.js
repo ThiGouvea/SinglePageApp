@@ -50,7 +50,7 @@ const CadastrarEventos = () => {
             </div>
 
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o nome do evendo</h3>
+                <h3 className={styles.nomesOptions} >Insira o nome do evento</h3>
                 <Input 
                     name='nome' 
                     type="string" 
@@ -67,54 +67,63 @@ const CadastrarEventos = () => {
                     placeholder="Descrição do evento"
                     onChange={HandleOnChange} />
             </div>
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira a data de inicio</h3>
-                <Input 
-                    name='DataInicio' 
-                    type="date" 
-                    required 
-                    placeholder="data inicio"
-                    onChange={HandleOnChange} />
-            </div>
-
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Selecione a data de termino</h3>   
-                <Input 
-                    name='DataFinal' 
-                    type="date" 
-                    required 
-                    placeholder="Termino evento"
-                    onChange={HandleOnChange} />
+            <div className={styles.optionsDupla}>
+                <div className={styles.options}>
+                    <h3 className={styles.nomesOptions} >Insira a data de inicio</h3>
+                    <Input 
+                        name='DataInicio' 
+                        type="date" 
+                        required 
+                        placeholder="data inicio"
+                        onChange={HandleOnChange} />
+                </div>
+                <div className={styles.options}>
+                    <h3 className={styles.nomesOptions} >Selecione a data de termino</h3>   
+                    <Input 
+                        name='DataFinal' 
+                        type="date" 
+                        required 
+                        placeholder="Termino evento"
+                        onChange={HandleOnChange} />
+                </div>
             </div>
             
             <Input 
                 name='LocalID' 
                 type="number" 
                 required 
-                placeholder="Insira o nome do evento"
+                placeholder="Local do evento"
                 onChange={HandleOnChange} />
             
             <Input 
                 name='Local' 
                 type="string" 
                 required 
-                placeholder="Insira o local do evento"
+                placeholder="Local do evento"
                 onChange={HandleOnChange} />
 
-            <Input 
-                name='HoraInicio' 
-                type="time" 
-                required 
-                placeholder="Insira o nome do evento"
-                onChange={HandleOnChange} />
+            <div className={styles.optionsDupla}>
+                <div className={styles.options}>
+                    <h3 className={styles.nomesOptions} >Horario inicio</h3>
+                    <Input 
+                        name='HoraInicio' 
+                        type="time" 
+                        required 
+                        placeholder="Insira o nome do evento"
+                        onChange={HandleOnChange} />
+                </div>
+                
+                <div className={styles.options}>
+                    <h3 className={styles.nomesOptions} >Horario termino</h3>
+                    <Input 
+                        name='HoraFim' 
+                        type="time" 
+                        required 
+                        placeholder="Insira o nome do evento"
+                        onChange={HandleOnChange} />
+                </div>
+            </div>
             
-            <Input 
-                name='HoraFim' 
-                type="time" 
-                required 
-                placeholder="Insira o nome do evento"
-                onChange={HandleOnChange} />
-
             <button 
                 type="submit"
                 onClick={onLogin}
