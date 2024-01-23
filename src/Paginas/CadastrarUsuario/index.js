@@ -124,6 +124,36 @@ const CadastrarUsuario = () => {
                     placeholder="Digite a senha"
                     onChange={HandleOnChange} />
             </div>
+
+            <div className={styles.options}>
+                <h3 className={styles.nomesOptions} >Insira o numero de telefone</h3>
+                <Input 
+                    name='Telefone' 
+                    type="string" 
+                    required 
+                    placeholder="Digite o telefone"
+                    onChange={HandleOnChange} />
+            </div>
+
+            <div className={styles.options}>
+                <h3 className={styles.nomesOptions} >Insira a escolaridade</h3>
+                <Input 
+                    name='Escolaridade' 
+                    type="string" 
+                    required 
+                    placeholder="Digite a escolaridade"
+                    onChange={HandleOnChange} />
+            </div>
+
+            <div className={styles.options}>
+                <h3 className={styles.nomesOptions} >Insira a profissão</h3>
+                <Input 
+                    name='Profissao' 
+                    type="string" 
+                    required 
+                    placeholder="Digite a profissão"
+                    onChange={HandleOnChange} />
+            </div>
             
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >ID local do evento</h3>
