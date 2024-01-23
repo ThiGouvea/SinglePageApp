@@ -8,6 +8,7 @@ import NaoEncontrada from "Paginas/NaoEncontrada";
 import Login from "Paginas/Login";
 import Eventos from "Paginas/Eventos";
 import CadastrarEventos from "Paginas/CadastrarEventos";
+import CadastrarUsuario from "Paginas/CadastrarUsuario";
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
           <Route path="login" element={<Login />} />
           <Route path="eventos" element={<Eventos />} />
           <Route path="cadastro_evento" element={<CadastrarEventos />} />
+          <Route path="cadastro_usuario" element={<CadastrarUsuario />} />
         </Route>
         <Route path="/posts/:id" element={<Post />} />
         <Route path="*" element={<NaoEncontrada />} />

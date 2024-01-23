@@ -1,5 +1,5 @@
 import Input from "Componentes/Input"
-import styles from "./CadastrarEventos.module.css"
+import styles from "./CadastrarUsuarios.module.css"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import axios from 'axios';
@@ -64,45 +64,44 @@ const CadastrarUsuario = () => {
                     onChange={HandleOnChange} />
             </div>
 
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o CPF</h3>
-                <Input 
-                    name='CPF' 
-                    type="string" 
-                    required 
-                    placeholder="Numero de CPF"
-                    onChange={HandleOnChange} />
+            <div className={styles.optionsDupla}>
+                <div className={styles.options}>
+                    <h3 className={styles.nomesOptions} >Insira o CPF</h3>
+                    <Input 
+                        name='CPF' 
+                        type="string" 
+                        required 
+                        placeholder="Numero de CPF"
+                        onChange={HandleOnChange} />
+                </div>
+                <div className={styles.options}>
+                    <h3 className={styles.nomesOptions} >Insira o RG</h3>
+                    <Input 
+                        name='RG' 
+                        type="string" 
+                        required 
+                        placeholder="Numero do RG"
+                        onChange={HandleOnChange} />
+                </div>
             </div>
 
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o RG</h3>
-                <Input 
-                    name='RG' 
-                    type="string" 
-                    required 
-                    placeholder="Numero do RG"
-                    onChange={HandleOnChange} />
-            </div>
-
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o genero</h3>
-                <Input 
-                    name='Genero' 
-                    type="string" 
-                    required 
-                    placeholder="Digite o genero"
-                    onChange={HandleOnChange} />
-            </div>
-
-            
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira a data de nascimento</h3>
-                <Input 
-                    name='DataNascimento' 
-                    type="date" 
-                    required 
-                    placeholder="data nascimento"
-                    onChange={HandleOnChange} />
+            <div className={styles.optionsDupla}>
+                <div className={styles.options}>
+                    <h3 className={styles.nomesOptions} >Insira o genero</h3>
+                    <select className={styles.comboBox} name="genero" id="genero">
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                    </select>
+                </div>
+                <div className={styles.options}>
+                    <h3 className={styles.nomesOptions} >Insira a data de nascimento</h3>
+                    <Input 
+                        name='DataNascimento' 
+                        type="date" 
+                        required 
+                        placeholder="data nascimento"
+                        onChange={HandleOnChange} />
+                </div>
             </div>
                 
             <div className={styles.options}>
@@ -135,68 +134,30 @@ const CadastrarUsuario = () => {
                     onChange={HandleOnChange} />
             </div>
 
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira a escolaridade</h3>
-                <Input 
-                    name='Escolaridade' 
-                    type="string" 
-                    required 
-                    placeholder="Digite a escolaridade"
-                    onChange={HandleOnChange} />
-            </div>
-
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira a profissão</h3>
-                <Input 
-                    name='Profissao' 
-                    type="string" 
-                    required 
-                    placeholder="Digite a profissão"
-                    onChange={HandleOnChange} />
-            </div>
-            
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >ID local do evento</h3>
-                <Input 
-                    name='LocalID' 
-                    type="number" 
-                    required 
-                    placeholder="Local do evento"
-                    onChange={HandleOnChange} />
-            </div>
-            
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Local do evento</h3>
-                <Input 
-                    name='Local' 
-                    type="string" 
-                    required 
-                    placeholder="Local do evento"
-                    onChange={HandleOnChange} />
-            </div>
-
             <div className={styles.optionsDupla}>
                 <div className={styles.options}>
-                    <h3 className={styles.nomesOptions} >Horario inicio</h3>
-                    <Input 
-                        name='HoraInicio' 
-                        type="time" 
-                        required 
-                        placeholder="Insira o nome do evento"
-                        onChange={HandleOnChange} />
+                <h3 className={styles.nomesOptions} >Selecione a escolaridade</h3>
+                    <select className={styles.comboBox} name="escolaridade" id="escolaridade">
+                        <option value="Fundamental_incompleto">Fundamental incompleto</option>
+                        <option value="Fundamental_completo">Fundamental completo</option>
+                        <option value="Medio_incompleto">Ensino medio incompleto</option>
+                        <option value="Medio_completo">Ensino medio completo</option>
+                        <option value="Superior_incompleto">Ensino superior incompleto</option>
+                        <option value="Superior_completo">Ensino superior completo</option>
+                    </select>
                 </div>
-                
+
                 <div className={styles.options}>
-                    <h3 className={styles.nomesOptions} >Horario termino</h3>
+                    <h3 className={styles.nomesOptions} >Insira a profissão</h3>
                     <Input 
-                        name='HoraFim' 
-                        type="time" 
+                        name='Profissao' 
+                        type="string" 
                         required 
-                        placeholder="Insira o nome do evento"
+                        placeholder="Digite a sua profissão"
                         onChange={HandleOnChange} />
                 </div>
             </div>
-            
+
             <button 
                 type="submit"
                 onClick={onLogin}
