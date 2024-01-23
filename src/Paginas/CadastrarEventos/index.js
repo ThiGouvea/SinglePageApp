@@ -29,16 +29,21 @@ const CadastrarEventos = () => {
               alert('evento cadastrado')
               navigate('/eventos')
             }
-            setLoading(false)
-          }
-          catch (err) {
+        }
+
+        catch (err) {
             alert('Algo deu errado com o Cadastro' + err)
-          }
+        }
+
+        finally {
+        setLoading(false)
+        }
       };
 
     const HandleOnChange = (event) => {
         setForm({...form, [event.target.name]: event.target.value})
     }
+    
     return (
         <form className={styles.formulario}>
             <div className={styles.options}>
@@ -58,6 +63,7 @@ const CadastrarEventos = () => {
                     placeholder="Nome do evento"
                     onChange={HandleOnChange} />
             </div>
+
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Insira a descrição do evento</h3>
                 <Input 
@@ -67,6 +73,7 @@ const CadastrarEventos = () => {
                     placeholder="Descrição do evento"
                     onChange={HandleOnChange} />
             </div>
+
             <div className={styles.optionsDupla}>
                 <div className={styles.options}>
                     <h3 className={styles.nomesOptions} >Insira a data de inicio</h3>
@@ -78,7 +85,7 @@ const CadastrarEventos = () => {
                         onChange={HandleOnChange} />
                 </div>
                 <div className={styles.options}>
-                    <h3 className={styles.nomesOptions} >Selecione a data de termino</h3>   
+                    <h3 className={styles.nomesOptions} >Insira a data de termino</h3>   
                     <Input 
                         name='DataFinal' 
                         type="date" 
@@ -88,19 +95,25 @@ const CadastrarEventos = () => {
                 </div>
             </div>
             
-            <Input 
-                name='LocalID' 
-                type="number" 
-                required 
-                placeholder="Local do evento"
-                onChange={HandleOnChange} />
+            <div className={styles.options}>
+                <h3 className={styles.nomesOptions} >ID local do evento</h3>
+                <Input 
+                    name='LocalID' 
+                    type="number" 
+                    required 
+                    placeholder="Local do evento"
+                    onChange={HandleOnChange} />
+            </div>
             
-            <Input 
-                name='Local' 
-                type="string" 
-                required 
-                placeholder="Local do evento"
-                onChange={HandleOnChange} />
+            <div className={styles.options}>
+                <h3 className={styles.nomesOptions} >Local do evento</h3>
+                <Input 
+                    name='Local' 
+                    type="string" 
+                    required 
+                    placeholder="Local do evento"
+                    onChange={HandleOnChange} />
+            </div>
 
             <div className={styles.optionsDupla}>
                 <div className={styles.options}>
