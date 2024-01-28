@@ -4,12 +4,14 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import axios from 'axios';
 
+// TODO
+
 
 const api = axios.create({
   baseURL: 'http://localhost:8080'
 });
 
-const CadastrarAtividade = () => {
+const CadastrarLocal = () => {
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
     const navigate = useNavigate()
@@ -49,84 +51,40 @@ const CadastrarAtividade = () => {
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione o status</h3>
                 <select className={styles.comboBox} name="status" id="status">
-                    <option value="ativo">Ativo</option>
+                    <option value="Disponivel">Disponivel</option>
                     <option value="inativo">Inativo</option>
                 </select>
             </div>
 
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o nome da instituição</h3>
+                <h3 className={styles.nomesOptions} >Insira a sala</h3>
                 <Input 
-                    name='nome' 
+                    name='sala' 
                     type="string" 
                     required 
-                    placeholder="Nome da instituição"
+                    placeholder="sala"
                     onChange={HandleOnChange} />
             </div>
 
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira a sigla da instituição</h3>
+                <h3 className={styles.nomesOptions} >Insira o setor</h3>
                 <Input 
-                    name='sigla' 
+                    name='setor' 
                     type="string" 
                     required 
-                    placeholder="Sigla da instituição"
+                    placeholder="Digite o setor"
                     onChange={HandleOnChange} />
             </div>
 
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o CNPJ da instituição</h3>
+                <h3 className={styles.nomesOptions} >Insira a data de termino</h3>   
                 <Input 
-                    name='cnpj' 
-                    type="string" 
+                    name='DataHoraFim' 
+                    type="date" 
                     required 
-                    placeholder="CNPJ da instituição"
+                    placeholder="Termino evento"
                     onChange={HandleOnChange} />
             </div>
-
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o endereço da instituição</h3>
-                <Input 
-                    name='endereco' 
-                    type="string" 
-                    required 
-                    placeholder="Endereço instituição"
-                    onChange={HandleOnChange} />
-            </div>
-
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o telefone</h3>
-                <Input 
-                    name='telefone' 
-                    type="number" 
-                    required 
-                    placeholder="Telefone da instituição"
-                    onChange={HandleOnChange} />
-            </div>
-
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o email da instituição</h3>
-                <Input 
-                    name='email' 
-                    type="email" 
-                    required 
-                    placeholder="Email"
-                    onChange={HandleOnChange} />
-            </div>
-
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >ID cidade</h3>
-                <Input 
-                    name='cidade_id' 
-                    type="number" 
-                    required 
-                    placeholder="ID cidade"
-                    onChange={HandleOnChange} />
-            </div>
-
-
-            
-
             
             <button 
                 type="submit"
@@ -139,4 +97,4 @@ const CadastrarAtividade = () => {
     )
 }
 
-export default CadastrarAtividade
+export default CadastrarLocal
