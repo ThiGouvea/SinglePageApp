@@ -21,7 +21,7 @@ const CadastrarInstituicao = () => {
             // const responses = await axios.get('http://localhost:8080/relatorio_inscritos_por_atividade/1');
             // console.log('response do Login', responses)
             // const response = await UserService.login(form);
-            const {response} = await axios.post('http://localhost:8080/login', form)
+            const {response} = await axios.post('http://localhost:8080/instituicao', form)
 
             console.log(response)
             
