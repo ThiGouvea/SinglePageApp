@@ -3,6 +3,7 @@ import styles from "./CadastrarAtividade.module.css"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import axios from 'axios';
+import ComboBox from "Componentes/ComboBox";
 
 
 const api = axios.create({
@@ -48,10 +49,10 @@ const CadastrarAtividade = () => {
         <form className={styles.formulario}>
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione o status</h3>
-                <select className={styles.comboBox} name="status" id="status">
+                <ComboBox name="status" id="status">
                     <option value="ativo">Ativo</option>
                     <option value="inativo">Inativo</option>
-                </select>
+                </ComboBox>
             </div>
 
             <div className={styles.options}>

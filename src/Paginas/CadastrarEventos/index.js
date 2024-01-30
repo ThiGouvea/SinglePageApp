@@ -105,16 +105,6 @@ const CadastrarEventos = () => {
                     onChange={HandleOnChange} />
             </div>
             
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Local do evento</h3>
-                <Input 
-                    name='Local' 
-                    type="string" 
-                    required 
-                    placeholder="Local do evento"
-                    onChange={HandleOnChange} />
-            </div>
-
             <div className={styles.optionsDupla}>
                 <div className={styles.options}>
                     <h3 className={styles.nomesOptions} >Horario inicio</h3>

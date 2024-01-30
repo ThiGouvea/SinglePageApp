@@ -11,8 +11,11 @@ const Menu = () => {
                 <MenuLink to="/eventos">
                     Eventos
                 </MenuLink>
-                <MenuLink to="/sobremim">
-                    Informações
+                <MenuLink to="/cadastro">
+                    Cadastrar
+                </MenuLink>
+                <MenuLink to="/listar">
+                    Listar
                 </MenuLink>
 
             </nav>
