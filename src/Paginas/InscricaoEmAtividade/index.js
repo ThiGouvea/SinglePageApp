@@ -10,7 +10,7 @@ const api = axios.create({
   baseURL: 'http://localhost:8080'
 });
 
-const CadastrarAtividade = () => {
+const InscricaoEmAtividade = () => {
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
     const navigate = useNavigate()
@@ -20,9 +20,12 @@ const CadastrarAtividade = () => {
         try {
             setLoading(true)
             form.atividade_id = parseInt(form.atividade_id)
-            form.evento_id = parseInt(form.evemtp_id)
+            form.evento_id = parseInt(form.evento_id)
             form.controle_presenca_id = parseInt(form.controle_presenca_id)
             form.usuario_id = parseInt(form.usuario_id)
+            form.data += "Z"
+            form.hora += "Z"
+            console.log(form)
             // const responses = await axios.get('http://localhost:8080/relatorio_inscritos_por_atividade/1');
             // console.log('response do Login', responses)
             // const response = await UserService.login(form);
@@ -74,7 +77,8 @@ const CadastrarAtividade = () => {
 
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione o status</h3>
-                <select className={styles.comboBox} name="status" id="status">
+                <select className={styles.comboBox} onChange={HandleOnChange} name="status" id="status">
+                    <option value="">Selecione</option>
                     <option value="pendente">Pendente</option>
                     <option value="confirmada">Confirmada</option>
                     <option value="cancelada">Cancelada</option>
@@ -86,6 +90,7 @@ const CadastrarAtividade = () => {
                     <Input 
                         name='data' 
                         type="datetime-local" 
+                        step="1"
                         required 
                         placeholder="Data atividade"
                         onChange={HandleOnChange} />
@@ -97,6 +102,7 @@ const CadastrarAtividade = () => {
                 <Input 
                     name='hora' 
                     type="datetime-local" 
+                    step="1"
                     required 
                     placeholder="Insira a hora de inicio"
                     onChange={HandleOnChange} />
@@ -136,4 +142,4 @@ const CadastrarAtividade = () => {
     )
 }
 
-export default CadastrarAtividade
+export default InscricaoEmAtividade

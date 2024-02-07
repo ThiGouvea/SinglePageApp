@@ -54,6 +54,7 @@ const CadastrarUsuario = () => {
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione o status</h3>
                 <select className={styles.comboBox} onChange={HandleOnChange} name="status" id="status">
+                    <option value="">Selecione</option>
                     <option value="ativo">Ativo</option>
                     <option value="inativo">Inativo</option>
                 </select>

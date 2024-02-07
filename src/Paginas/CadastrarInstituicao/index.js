@@ -51,7 +51,7 @@ const CadastrarInstituicao = () => {
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione o status</h3>
                 <select className={styles.comboBox} onChange={HandleOnChange} name="status" id="status">
-                <option value="">Selecione</option>
+                    <option value="">Selecione</option>
                     <option value="ativo">Ativo</option>
                     <option value="inativo">Inativo</option>
                 </select>
@@ -118,7 +118,7 @@ const CadastrarInstituicao = () => {
             </div>
 
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o telefone</h3>
+                <h3 className={styles.nomesOptions} >Insira o ID da cidade</h3>
                 <Input 
                     name='cidade_id' 
                     type="number" 

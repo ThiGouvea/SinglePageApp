@@ -13,6 +13,8 @@ import CadastrarLocal from "Paginas/CadastrarLocal";
 import Cadastros from "Paginas/PaginaDeCadastros";
 import CadastrarAtividade from "Paginas/CadastrarAtividade";
 import CadastrarInstituicao from "Paginas/CadastrarInstituicao";
+import InscricaoEmAtividade from "Paginas/InscricaoEmAtividade";
+import InscricaoEmEvento from "Paginas/InscricaoEmEvento";
 
 function AppRoutes() {
   return (
@@ -32,6 +34,12 @@ function AppRoutes() {
           <Route path="cadastro_instituicao" element={<CadastrarInstituicao />} />
           <Route path="cadastro_local" element={<CadastrarLocal />} />
           <Route path="cadastro_usuario" element={<CadastrarUsuario />} />
+        </Route>
+          <Route path="/inscricao" element={<PaginaPadrao />}>
+          <Route index element={<Cadastros />} />
+          <Route path="inscricao_atividade" element={<InscricaoEmAtividade/>} />
+          <Route path="inscricao_evento" element={<InscricaoEmEvento />} />
+          
         </Route>
         <Route path="/posts/:id" element={<Post />} />
         <Route path="*" element={<NaoEncontrada />} />

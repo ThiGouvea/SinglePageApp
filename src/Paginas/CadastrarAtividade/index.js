@@ -5,6 +5,14 @@ import { useState } from "react";
 import axios from 'axios';
 
 
+
+
+
+// do
+
+
+
+
 const api = axios.create({
   baseURL: 'http://localhost:8080'
 });
@@ -18,9 +26,9 @@ const CadastrarAtividade = () => {
         event.preventDefault();
         try {
             setLoading(true)
-            form.hora_inicio += "-03:00"
-            form.hora_termino += "-03:00"
-            form.data += "-03:00"
+            form.hora_inicio += "Z"
+            form.hora_termino += "Z"
+            form.data += "Z"
             form.tipo_atividade_id = parseInt(form.tipo_atividade_id)
             form.valor_inscricao = parseInt(form.valor_inscricao);
             form.local_id = parseInt(form.local_id);
@@ -60,6 +68,7 @@ const CadastrarAtividade = () => {
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione o status</h3>
                 <select className={styles.comboBox} onChange={HandleOnChange} name="status" id="status">
+                    <option value="">Selecione</option>
                     <option value="ativo">Ativo</option>
                     <option value="inativo">Inativo</option>
                 </select>
