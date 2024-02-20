@@ -28,7 +28,40 @@ const ListarEvento = () => {
   }
     
     return (
-      <div>
+      <div className={styles.formulario}>
+        
+        <ul>
+            {conteudo.map(conteudo => (
+                <li key={conteudo.ID}>
+                    <h4>
+                      <b>Nome: </b>{conteudo.nome}
+                    </h4>
+                    <h4>
+                      Email: {conteudo.email}
+                    </h4>
+                    <h4>
+                      CPF: {conteudo.cpf}
+                    </h4>
+                    <h4>
+                      RG: {conteudo.rg}
+                    </h4>
+                    <h4>
+                      Status: {conteudo.status}
+                    </h4>
+                    <h4>
+                      Telefone: {conteudo.telefone}
+                    </h4>
+                    <h4>
+                      Data de Nascimento: {conteudo.data_nascimento}
+                    </h4>
+                    <h4>
+                      Escolaridade: {conteudo.escolaridade}
+                    </h4>
+                    
+                </li>
+            ))}
+        </ul>
+
         <button 
           type="submit"
           onClick={listarConteudo}
@@ -36,16 +69,6 @@ const ListarEvento = () => {
           text='Entrar'
           >Listar
         </button>
-
-        <ul className={styles.posts}>
-            {conteudo.map(conteudo => (
-                <li key={conteudo.ID}>
-                    <h1>
-                      {conteudo.ID}
-                    </h1>
-                </li>
-            ))}
-        </ul>
 
       </div>
       
