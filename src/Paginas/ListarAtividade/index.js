@@ -7,23 +7,99 @@ const api = axios.create({
 });
 
 const ListarAtividade = () => {
-    const [atividade, setAtividade] = useState([])
+    const [conteudo, setConteudo] = useState([])
 
-    async function status() {
+    async function getConteudo() {
         const url = "http://localhost:8080/atividade/";
         let response = await axios.get(url);
         return response.data;
       }
 
-    useEffect(() => {
-        status().then((data) => setAtividade(data))
-        console.log(atividade)
-    }, [])
-    
-    return (
-        <div className={styles.formulario}>
+      async function deleteConteudo(ID) {
+        const url = `http://localhost:8080/usuario/:${ID}/`;
+        const {response} = await axios.delete(url).catch(function (error) {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            window.alert(error.response.data.error);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser 
+            // and an instance of http.ClientRequest in node.js
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+          }
+      });
+      }
 
-        </div>
+    useEffect(() => {
+        getConteudo().then((data) => setConteudo(data))
+        console.log(conteudo) 
+    }, [])
+
+    return (
+      <div className={styles.formulario}>
+        
+        <ul>
+            {conteudo.map(conteudo => (
+                <li key={conteudo.ID} className="nomesOptions">
+                    <h4>
+                      <b>Status: </b>{conteudo.status}
+                    </h4>
+                    <h4>
+                      Id tipo de atividade: {conteudo.tipo_atividade_id}
+                    </h4>
+                    <h4>
+                      Titulo: {conteudo.titulo}
+                    </h4>
+                    <h4>
+                      Resumo: {conteudo.resumo}
+                    </h4>
+                    <h4>
+                      Data: {conteudo.data}
+                    </h4>
+                    <h4>
+                      Hora inicio: {conteudo.hora_inicio}
+                    </h4>
+                    <h4>
+                      Hora termino: {conteudo.hora_termino}
+                    </h4>
+                    <h4>
+                      Observação: {conteudo.observacao}
+                    </h4>    
+                    <h4>
+                      Ministrante: {conteudo.ministrante}
+                    </h4>  
+                    <h4>
+                      Quantidade de vagas: {conteudo.quantidade_vagas}
+                    </h4>
+                    <h4>
+                      Duração: {conteudo.duracao}hrs
+                    </h4>  
+                    <h4>
+                      Cargar horaria: {conteudo.carga_horaria}hrs
+                    </h4> 
+                    <h4>
+                      Id local: {conteudo.local_id}
+                    </h4>    
+                    <button 
+                      type="submit"
+                      onClick={() => deleteConteudo(conteudo.ID)}
+                      className={styles.submit}
+                      text='Deletar'
+                      >Deletar
+                    </button>               
+                </li>
+            ))}
+        </ul>
+
+
+      </div>
+      
     )
 }
 

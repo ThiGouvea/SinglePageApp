@@ -18,7 +18,10 @@ import InscricaoEmEvento from "Paginas/InscricaoEmEvento";
 import Inscricoes from "Paginas/PaginaDeInscricoes";
 import Listagens from "Paginas/PaginaDeListagens";
 import ListarAtividade from "Paginas/ListarAtividade";
-import ListarEvento from "Paginas/ListarEventos";
+import ListarEvento from "Paginas/ListarUsuario";
+import ListarUsuario from "Paginas/ListarUsuario";
+import ListarInstituicao from "Paginas/ListarInstituicao";
+import ListarLocal from "Paginas/ListarLocal";
 
 function AppRoutes() {
   return (
@@ -48,9 +51,9 @@ function AppRoutes() {
           <Route index element={<Listagens />} />
           <Route path="listar_atividades" element={<ListarAtividade />} />
           <Route path="listar_eventos" element={<ListarEvento />} />
-          <Route path="listar_instituicoes" element={<CadastrarInstituicao />} />
-          <Route path="listar_locais" element={<CadastrarLocal />} />
-          <Route path="listar_usuarios" element={<CadastrarUsuario />} />
+          <Route path="listar_instituicoes" element={<ListarInstituicao />} />
+          <Route path="listar_locais" element={<ListarLocal />} />
+          <Route path="listar_usuarios" element={<ListarUsuario />} />
           
         </Route>
         
