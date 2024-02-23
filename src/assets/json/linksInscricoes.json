@@ -1,0 +1,10 @@
+[
+    {
+        "titulo": "Inscrição em Atividade",
+        "caminho": "/inscricao/inscricao_atividade" 
+    },
+    {
+        "titulo": "Inscricão em Evento",
+        "caminho": "/inscricao/inscricao_evento"
+    }
+]

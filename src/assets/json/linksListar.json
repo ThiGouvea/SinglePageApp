@@ -1,0 +1,22 @@
+[
+    {
+        "titulo": "Listar Atividades",
+        "caminho": "/listar/listar_atividades" 
+    },
+    {
+        "titulo": "Listar Eventos",
+        "caminho": "/listar/listar_eventos"
+    },
+    {
+        "titulo": "Listar Instituições",
+        "caminho": "/listar/listar_instituicoes"
+    },
+    {
+        "titulo": "Listar Locais",
+        "caminho": "/listar/listar_locais"
+    },
+    {
+        "titulo": "Listar Usuarios",
+        "caminho": "/listar/listar_usuarios"
+    }
+]
