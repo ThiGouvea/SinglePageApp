@@ -1,8 +1,9 @@
 import Input from "Componentes/Input"
 import styles from "./CadastrarEventos.module.css"
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
+import Select from 'react-select'
 
 
 const api = axios.create({
@@ -14,6 +15,19 @@ const CadastrarEventos = () => {
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
     const navigate = useNavigate()
+    const [local, setLocal] = useState([])
+
+    async function getConteudo(links) {
+        const url = links;
+        let response = await axios.get(url);
+        return response.data;
+      }
+    
+      useEffect(() => {
+        getConteudo("http://localhost:8080/local/").then((data) => setLocal(data))
+        
+    }, [])
+    
     
     const onLogin = async (event) => {
         event.preventDefault();
@@ -61,6 +75,10 @@ const CadastrarEventos = () => {
 
     const HandleOnChange = (event) => {
         setForm({...form, [event.target.name]: event.target.value})
+    }
+
+    const HandleOnSelect = (event) => {
+        setForm({...form, [event.name]: event.value})
     }
     
     return (
@@ -125,16 +143,23 @@ const CadastrarEventos = () => {
                         onChange={HandleOnChange} />
                 </div>
             </div>
-            
+
+
+
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >ID local do evento</h3>
-                <Input 
-                    name='local_id' 
-                    type="number" 
-                    required 
-                    placeholder="Local do evento"
-                    onChange={HandleOnChange} />
+                <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
+                <Select
+                    name='local_id'
+                    type='number'
+                    required
+                    options={local}
+                    value={local.ID}
+                    onChange={HandleOnSelect}
+                    getOptionLabel={(local) => `sala ${local.sala}, ${local.setor}` }
+                    getOptionValue={(local) => local.ID}
+                />
             </div>
+
             
             <div className={styles.optionsDupla}>
                 <div className={styles.options}>

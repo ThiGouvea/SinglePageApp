@@ -3,6 +3,8 @@ import styles from "./CadastrarInstituicao.module.css"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import axios from 'axios';
+import Cidades from "assets/json/estados-cidades2.json"
+import Select from "react-select";
 
 
 const api = axios.create({
@@ -13,6 +15,7 @@ const CadastrarInstituicao = () => {
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
     const navigate = useNavigate()
+    const cidade = Cidades
     
     const onLogin = async (event) => {
         event.preventDefault();
@@ -60,6 +63,10 @@ const CadastrarInstituicao = () => {
 
     const HandleOnChange = (event) => {
         setForm({...form, [event.target.name]: event.target.value})
+    }
+
+    const HandleOnSelect = (event) => {
+        setForm({...form, [event.name]: event.value})
     }
     
     return (
@@ -133,14 +140,19 @@ const CadastrarInstituicao = () => {
                     onChange={HandleOnChange} />
             </div>
 
+
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Insira o ID da cidade</h3>
-                <Input 
-                    name='cidade_id' 
-                    type="number" 
-                    required 
-                    placeholder="ID da cidade"
-                    onChange={HandleOnChange} />
+                <h3 className={styles.nomesOptions} >Selecione uma Cidade</h3>
+                <Select
+                    name='cidade_id'
+                    type='number'
+                    required
+                    options={cidade}
+                    value={cidade.ID}
+                    onChange={HandleOnSelect}
+                    getOptionLabel={(cidade) => cidade.name }
+                    getOptionValue={(cidade) => cidade.ID}
+                />
             </div>
 
 

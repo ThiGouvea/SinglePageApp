@@ -5,15 +5,6 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Select from 'react-select'
 
-
-
-
-
-// do
-
-
-
-
 const api = axios.create({
   baseURL: 'http://localhost:8080'
 });
@@ -23,6 +14,7 @@ const CadastrarAtividade = () => {
     const [form, setForm] = useState([])
     const navigate = useNavigate()
     const [conteudo, setConteudo] = useState([])
+    const [local, setLocal] = useState([])
 
     async function getConteudo(links) {
         const url = links;
@@ -32,6 +24,7 @@ const CadastrarAtividade = () => {
 
     useEffect(() => {
         getConteudo("http://localhost:8080/tipoAtividades/").then((data) => setConteudo(data))
+        getConteudo("http://localhost:8080/local/").then((data) => setLocal(data))
         console.log(conteudo) 
     }, [])
     
@@ -104,16 +97,19 @@ const CadastrarAtividade = () => {
                 </select>
             </div>
 
-            <Select
-                name='tipo_atividade_id'
-                type='number'
-                required
-                options={conteudo}
-                value={conteudo.ID}
-                onChange={HandleOnSelect}
-                getOptionLabel={(conteudo) => conteudo.nome}
-                getOptionValue={(conteudo) => conteudo.ID}
-            />
+            <div className={styles.options}>
+            <h3 className={styles.nomesOptions} >Selecione um tipo de atividade</h3>
+                <Select
+                    name='tipo_atividade_id'
+                    type='number'
+                    required
+                    options={conteudo}
+                    value={conteudo.ID}
+                    onChange={HandleOnSelect}
+                    getOptionLabel={(conteudo) => conteudo.nome}
+                    getOptionValue={(conteudo) => conteudo.ID}
+                />
+            </div>
 
 
             <div className={styles.options}>
@@ -234,16 +230,21 @@ const CadastrarAtividade = () => {
                     onChange={HandleOnChange} />
             </div>
 
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Local ID //todo</h3>
-                <Input 
-                    name='local_id' 
-                    type="number" 
-                    required 
-                    placeholder="ID do local"
-                    onChange={HandleOnChange} />
-            </div>            
+         
 
+            <div className={styles.options}>
+            <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
+                <Select
+                    name='local_id'
+                    type='number'
+                    required
+                    options={local}
+                    value={local.ID}
+                    onChange={HandleOnSelect}
+                    getOptionLabel={(local) => `sala ${local.sala}, ${local.setor}` }
+                    getOptionValue={(local) => local.ID}
+                />
+            </div>
             
             <button 
                 type="submit"

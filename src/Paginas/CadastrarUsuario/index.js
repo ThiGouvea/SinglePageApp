@@ -3,6 +3,8 @@ import styles from "./CadastrarUsuarios.module.css"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import Cidades from "assets/json/estados-cidades2.json"
+import Select from "react-select";
 
 
 const api = axios.create({
@@ -13,17 +15,21 @@ const CadastrarUsuario = () => {
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
     const [tipoUsuario, setTipoUsuario] = useState([])
+    const [instituicao, setiInstituicao] = useState([])
+    const cidade = Cidades
     const navigate = useNavigate()
     
+    
 
-    async function status() {
-        const url = "http://localhost:8080/tipoUsuario/";
+    async function getConteudo(links) {
+        const url = links;
         let response = await axios.get(url);
         return response.data;
       }
         
     useEffect(() => {
-        status().then((data) => setTipoUsuario(data))
+        getConteudo("http://localhost:8080/tipoUsuario/").then((data) => setTipoUsuario(data))
+        getConteudo("http://localhost:8080/instituicao/").then((data) => setiInstituicao(data))
     }, [])
 
     const onLogin = async (event) => {
@@ -56,7 +62,7 @@ const CadastrarUsuario = () => {
                 }
             });
 
-            console.log(response)
+            window.alert(response.ID)
             
             if (response === true) {
               alert('evento cadastrado')
@@ -74,9 +80,11 @@ const CadastrarUsuario = () => {
       };
 
     const HandleOnChange = (event) => {
-        console.log(tipoUsuario)
-
         setForm({...form, [event.target.name]: event.target.value})
+    }
+
+    const HandleOnSelect = (event) => {
+        setForm({...form, [event.name]: event.value})
     }
     
     return (
@@ -195,34 +203,48 @@ const CadastrarUsuario = () => {
                 </div>
             </div>
 
+
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Tipo usuario ID</h3>
-                <Input 
-                    name='tipo_usuario_id' 
-                    type="number" 
-                    required 
-                    placeholder="ID do tipo de usuario"
-                    onChange={HandleOnChange} />
+                <h3 className={styles.nomesOptions} >Selecione um tipo de usuario</h3>
+                <Select
+                    name='tipo_usuario_id'
+                    type='number'
+                    required
+                    options={tipoUsuario}
+                    value={tipoUsuario.ID}
+                    onChange={HandleOnSelect}
+                    getOptionLabel={(tipoUsuario) => tipoUsuario.tipo_usuario }
+                    getOptionValue={(tipoUsuario) => tipoUsuario.ID}
+                />
+            </div>
+
+
+            <div className={styles.options}>
+                <h3 className={styles.nomesOptions} >Selecione uma Instituição</h3>
+                <Select
+                    name='instituicao_id'
+                    type='number'
+                    required
+                    options={instituicao}
+                    value={instituicao.ID}
+                    onChange={HandleOnSelect}
+                    getOptionLabel={(instituicao) => instituicao.nome }
+                    getOptionValue={(instituicao) => instituicao.ID}
+                />
             </div>
 
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >ID da instituição</h3>
-                <Input 
-                    name='instituicao_id' 
-                    type="number" 
-                    required 
-                    placeholder="ID da instituição"
-                    onChange={HandleOnChange} />
-            </div>
-
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >ID da cidade</h3>
-                <Input 
-                    name='cidadeid' 
-                    type="number" 
-                    required 
-                    placeholder="ID da cidade"
-                    onChange={HandleOnChange} />
+                <h3 className={styles.nomesOptions} >Selecione uma Cidade</h3>
+                <Select
+                    name='cidade_id'
+                    type='number'
+                    required
+                    options={cidade}
+                    value={cidade.ID}
+                    onChange={HandleOnSelect}
+                    getOptionLabel={(cidade) => cidade.name }
+                    getOptionValue={(cidade) => cidade.ID}
+                />
             </div>
 
             <button 
