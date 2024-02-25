@@ -4,6 +4,37 @@
     margin: 5rem;
     align-items: center;
 }
+.options {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.125rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.optionsDupla {
+    display: flex;
+    gap: 1rem;
+}
+
+.nomesOptions {
+    margin: 0;
+    font-size: 1rem;
+    margin-right: 2rem;
+    margin-bottom: -2rem;
+}
+
+.comboBox {
+    padding: 0.5rem;
+    border-radius: 24px;
+    font-size: 1.125rem;
+    line-height: 1.125rem;
+    background-color: var(--azul-medio);
+    color: var(--branco);
+    border: 3px solid var(--azul-medio);
+    height: 3rem;
+
+}
 
 .submit {
     cursor: pointer;

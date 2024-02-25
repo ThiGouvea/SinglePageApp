@@ -18,18 +18,9 @@ const ListarUsuario = () => {
       }
 
     async function deleteConteudo(ID) {
-      const url = `http://localhost:8080/usuario/:${ID}/`;
-      const {response} = await axios.delete(url).catch(function (error) {
-        if (error.response) {
-          window.alert(error.response.data.error);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log('Error', error.message);
-        }
-    });
+      const url = `http://localhost:8080/usuario/${ID}`;
+      await axios.delete(url);
+      window.location.reload()
     }
 
   

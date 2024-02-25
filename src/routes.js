@@ -28,6 +28,7 @@ import EditarEvento from 'Paginas/EditarEventos';
 import EditarInstituicao from 'Paginas/EditarInstituicao';
 import EditarLocal from 'Paginas/EditarLocal';
 import EditarUsuario from 'Paginas/EditarUsuario';
+import CriarConta from 'Paginas/CriarConta';
 
 function AppRoutes() {
   return (
@@ -78,6 +79,7 @@ function AppRoutes() {
         
         <Route path="/posts/:id" element={<Post />} />
         <Route path="*" element={<NaoEncontrada />} />
+        <Route path='/criar_conta' element={<CriarConta />} />
       </Routes>
       <Rodape />
     </BrowserRouter>

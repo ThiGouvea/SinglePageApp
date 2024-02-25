@@ -62,20 +62,30 @@ const Login = () => {
                 placeholder={"Insira seu email"} 
                 onChange={HandleOnChange} />
 
-            <Input 
+            <Input Cadastrar
                 name='senha' 
                 type="password" 
                 required 
                 placeholder="Insira a senha"
                 onChange={HandleOnChange} />
 
-            <button 
-                type="submit"
-                onClick={onLogin}
-                className={styles.submit}
-                text='Entrar'
-                >Entrar
-            </button>
+            <div className={styles.optionsDupla}>
+              <button 
+                  type="submit"
+                  onClick={onLogin}
+                  className={styles.submit}
+                  text='Entrar'
+                  >Entrar
+              </button>
+
+              <button 
+                  type="submit"
+                  onClick={() => navigate("/criar_conta")}
+                  className={styles.submit}
+                  text='Entrar'
+                  >Criar conta
+              </button>
+            </div>
         </form>
     )
 }

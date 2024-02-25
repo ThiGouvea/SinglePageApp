@@ -1,14 +1,15 @@
 import styles from "./CadastrarAtividade.module.css"
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import ListaLinkItem from "Componentes/ListaLinkItem";
 import BotaoEditar from "Componentes/BotaoEditar";
+import { useNavigate } from "react-router-dom";
 
 const api = axios.create({
   baseURL: 'http://localhost:8080'
 });
 
 const ListarLocal = () => {
+    const navigate = useNavigate()
     const [conteudo, setConteudo] = useState([])
 
     async function getConteudo() {
@@ -24,8 +25,10 @@ const ListarLocal = () => {
 
 
     async function deleteConteudo(ID) {
-      const url = `http://localhost:8080/usuario/${ID}`;
+      const url = `http://localhost:8080/local/${ID}`;
       axios.delete(url)
+      navigate("/listar")
+      
     }
     
     return (
