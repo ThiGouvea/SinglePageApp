@@ -26,6 +26,8 @@ import ListarLocal from "Paginas/ListarLocal";
 import EditarAtividade from "Paginas/EditarAtividade";
 import EditarEvento from 'Paginas/EditarEventos';
 import EditarInstituicao from 'Paginas/EditarInstituicao';
+import EditarLocal from 'Paginas/EditarLocal';
+import EditarUsuario from 'Paginas/EditarUsuario';
 
 function AppRoutes() {
   return (
@@ -69,8 +71,8 @@ function AppRoutes() {
           <Route path="editar_atividade/:id" element={<EditarAtividade />} />
           <Route path="editar_evento/:id" element={<EditarEvento />} />
           <Route path="editar_instituicao/:id" element={<EditarInstituicao />} />
-          <Route path="editar_locai/:id" element={<ListarLocal />} />
-          <Route path="editar_usuario/:id" element={<ListarUsuario />} />
+          <Route path="editar_local/:id" element={<EditarLocal />} />
+          <Route path="editar_usuario/:id" element={<EditarUsuario />} />
           
         </Route>
         

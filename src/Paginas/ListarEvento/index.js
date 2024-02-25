@@ -23,9 +23,8 @@ const ListarEvento = () => {
 
 
     async function deleteConteudo(ID) {
-      const url = `http://localhost:8080/evento/:${ID}`;
-      const {response} = await axios.delete(url)
-      console.log('dele')
+      const url = `http://localhost:8080/evento/${ID}`;
+      await axios.delete(url)
     }
     
     return (
