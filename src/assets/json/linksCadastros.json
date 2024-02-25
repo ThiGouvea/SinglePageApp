@@ -1,0 +1,22 @@
+[
+    {
+        "titulo": "Cadastro de Atividade",
+        "caminho": "/cadastro/cadastro_atividade" 
+    },
+    {
+        "titulo": "Cadastro de Evento",
+        "caminho": "/cadastro/cadastro_evento"
+    },
+    {
+        "titulo": "Cadastro de Instituição",
+        "caminho": "/cadastro/cadastro_instituicao"
+    },
+    {
+        "titulo": "Cadastro de Local",
+        "caminho": "/cadastro/cadastro_local"
+    },
+    {
+        "titulo": "Cadastro de Usuario",
+        "caminho": "/cadastro/cadastro_usuario"
+    }
+]
