@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import Cidades from "assets/json/estados-cidades2.json"
-import Select from "react-select";
+import Select from "react-select"
 
 
 const api = axios.create({
@@ -35,28 +35,19 @@ const CriarConta = () => {
         try {
             setLoading(true)
             form.tipo_usuario_id = parseInt(form.tipo_usuario_id)
-            form.instituicao_id = parseInt(form.instituicao_id)
-            form.cidadeid = parseInt(form.cidadeid)
+            // form.instituicao_id = parseInt(form.instituicao_id)
+            // form.cidadeid = parseInt(form.cidadeid)
             form.tipo_usuario_id = 1;
             console.log(form)
-            // const responses = await axios.get('http://localhost:8080/relatorio_inscritos_por_atividade/1');
-            // console.log('response do Login', responses)
-            // const response = await UserService.login(form);
             const {response} = await axios.post('http://localhost:8080/usuario/', form).catch(function (error) {
                 if (error.response) {
-                  // The request was made and the server responded with a status code
-                  // that falls out of the range of 2xx
                   window.alert(error.response.data.MENSAGEM);
                   window.alert(error.response.data.error);
                   console.log(error.response.status);
                   console.log(error.response.headers);
                 } else if (error.request) {
-                  // The request was made but no response was received
-                  // `error.request` is an instance of XMLHttpRequest in the browser 
-                  // and an instance of http.ClientRequest in node.js
                   console.log(error.request);
                 } else {
-                  // Something happened in setting up the request that triggered an Error
                   console.log('Error', error.message);
                 }
             });
@@ -83,9 +74,20 @@ const CriarConta = () => {
     }
 
     const HandleOnSelect = (event) => {
-        setForm({...form, [event.name]: event.value})
+        setForm({...form, [event.target.name]: event.target.value})
+        console.log(event.target.name)
+        console.log(event.target.value)
+        console.log(form)
     }
+
+    const options = cidade.map((option) => 
+    <option key={option.id} value={option.id}>{option.name}</option>
+    );
     
+    const optionsInstituicao = instituicao.map((option) => 
+    <option key={option.ID} value={option.ID}>{option.nome}</option>
+    );
+
     return (
         <form className={styles.formulario}>
             <div className={styles.options}>
@@ -203,32 +205,29 @@ const CriarConta = () => {
                 </div>
             </div>
 
-            <div className={styles.options}>
+            <div className={styles.options} name='instituicao_id'>
                 <h3 className={styles.nomesOptions} >Selecione uma Instituição</h3>
-                <Select
+                <select 
+                    className={styles.comboBox}
                     name='instituicao_id'
                     type='number'
-                    required
-                    options={instituicao}
-                    value={instituicao.ID}
                     onChange={HandleOnSelect}
-                    getOptionLabel={(instituicao) => instituicao.nome }
-                    getOptionValue={(instituicao) => instituicao.ID}
-                />
+                    required>
+                        {optionsInstituicao}
+                    </select>
+
             </div>
 
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione uma Cidade</h3>
-                <Select
+                <select
+                    className={styles.comboBox}
                     name='cidade_id'
                     type='number'
-                    required
-                    options={cidade}
-                    value={cidade.ID}
                     onChange={HandleOnSelect}
-                    getOptionLabel={(cidade) => cidade.name }
-                    getOptionValue={(cidade) => cidade.ID}
-                />
+                    required>
+                        {options}
+                    </select>
             </div>
 
             <button 

@@ -86,6 +86,18 @@ const CadastrarUsuario = () => {
     const HandleOnSelect = (event) => {
         setForm({...form, [event.name]: event.value})
     }
+
+    const options = cidade.map((option) => 
+    <option key={option.id} value={option.id}>{option.name}</option>
+    );
+    
+    const optionsInstituicao = instituicao.map((option) => 
+    <option key={option.ID} value={option.ID}>{option.nome}</option>
+    );
+
+    const optionsUsuario = tipoUsuario.map((option) => 
+    <option key={option.ID} value={option.ID}>{option.tipo_usuario}</option>
+    );
     
     return (
         <form className={styles.formulario}>
@@ -203,48 +215,40 @@ const CadastrarUsuario = () => {
                 </div>
             </div>
 
-
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione um tipo de usuario</h3>
-                <Select
+                <select 
+                    className={styles.comboBox}
                     name='tipo_usuario_id'
                     type='number'
-                    required
-                    options={tipoUsuario}
-                    value={tipoUsuario.ID}
                     onChange={HandleOnSelect}
-                    getOptionLabel={(tipoUsuario) => tipoUsuario.tipo_usuario }
-                    getOptionValue={(tipoUsuario) => tipoUsuario.ID}
-                />
+                    required>
+                        {optionsUsuario}
+                    </select>
             </div>
 
-
-            <div className={styles.options}>
+            <div className={styles.options} name='instituicao_id'>
                 <h3 className={styles.nomesOptions} >Selecione uma Instituição</h3>
-                <Select
+                <select 
+                    className={styles.comboBox}
                     name='instituicao_id'
                     type='number'
-                    required
-                    options={instituicao}
-                    value={instituicao.ID}
                     onChange={HandleOnSelect}
-                    getOptionLabel={(instituicao) => instituicao.nome }
-                    getOptionValue={(instituicao) => instituicao.ID}
-                />
+                    required>
+                        {optionsInstituicao}
+                    </select>
             </div>
 
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione uma Cidade</h3>
-                <Select
+                <select
+                    className={styles.comboBox}
                     name='cidade_id'
                     type='number'
-                    required
-                    options={cidade}
-                    value={cidade.ID}
                     onChange={HandleOnSelect}
-                    getOptionLabel={(cidade) => cidade.name }
-                    getOptionValue={(cidade) => cidade.ID}
-                />
+                    required>
+                        {options}
+                    </select>
             </div>
 
             <button 

@@ -61,6 +61,10 @@ const CadastrarInstituicao = () => {
         }
       };
 
+    const options = cidade.map((option) => 
+    <option key={option.id} value={option.id}>{option.name}</option>
+    );
+
     const HandleOnChange = (event) => {
         setForm({...form, [event.target.name]: event.target.value})
     }
@@ -140,19 +144,16 @@ const CadastrarInstituicao = () => {
                     onChange={HandleOnChange} />
             </div>
 
-
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione uma Cidade</h3>
-                <Select
+                <select
+                    className={styles.comboBox}
                     name='cidade_id'
                     type='number'
-                    required
-                    options={cidade}
-                    value={cidade.ID}
                     onChange={HandleOnSelect}
-                    getOptionLabel={(cidade) => cidade.name }
-                    getOptionValue={(cidade) => cidade.ID}
-                />
+                    required>
+                        {options}
+                    </select>
             </div>
 
 

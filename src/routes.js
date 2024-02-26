@@ -1,5 +1,3 @@
-import { useParams } from 'react-router-dom';
-import SobreMim from "./Paginas/SobreMim";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Menu from "./Componentes/Menu";
 import Rodape from "Componentes/Rodape";
@@ -29,15 +27,17 @@ import EditarInstituicao from 'Paginas/EditarInstituicao';
 import EditarLocal from 'Paginas/EditarLocal';
 import EditarUsuario from 'Paginas/EditarUsuario';
 import CriarConta from 'Paginas/CriarConta';
+import PrivateRoute from "Componentes/PrivateRoute";
+import Private from "Componentes/PrivateRoute";
 
 function AppRoutes() {
+  const isAuthenticated = localStorage.getItem('isAuthenticated')
   return (
     <BrowserRouter>
       <Menu />
       <Routes>
         <Route path="/" element={<PaginaPadrao />}>
           <Route index element={<Login />} />
-          <Route path="sobremim" element={<SobreMim />} />
           <Route path="login" element={<Login />} />
         </Route>
 
@@ -46,7 +46,7 @@ function AppRoutes() {
             <Route path=":id" element={<EditarEvento />} />    
           </Route>
 
-        <Route path="/cadastro" element={<PaginaPadrao />}>
+        <Route path="/cadastro" Component={PaginaPadrao}>
           <Route index element={<Cadastros />} />
           <Route path="cadastro_atividade" element={<CadastrarAtividade />} />
           <Route path="cadastro_evento" element={<CadastrarEventos />} />

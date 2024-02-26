@@ -73,6 +73,10 @@ const CadastrarEventos = () => {
         }
       };
 
+    const optionsLocais = local.map((option) => 
+      <option key={option.ID} value={option.ID}>{`sala ${option.sala}, ${option.setor}`}</option>
+  );
+
     const HandleOnChange = (event) => {
         setForm({...form, [event.target.name]: event.target.value})
     }
@@ -80,19 +84,10 @@ const CadastrarEventos = () => {
     const HandleOnSelect = (event) => {
         setForm({...form, [event.name]: event.value})
     }
+
+
     
     return (
-
-
-        // "status": "ativo",
-//         "nome": "Encontro Cientifico 2 ",
-//         "descricao": "Encontro cientifico sobre biologia molecar da sociedade moderna francesa que isso, esse evento maravilhoso inscrivel que será criado e selebrado urgentemente  ",
-//         "data_inicio": "2023-10-11T21:10:00-03:00",
-//         "data_final": "2023-10-11T21:10:30-03:00",
-//         "local_id": 6,
-//         "horaInicio": "0000-12-31T20:53:32-03:06",
-//         "horaFim": "0000-12-31T20:53:32-03:06"
-
         <form className={styles.formulario}>
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione o status</h3>
@@ -144,20 +139,16 @@ const CadastrarEventos = () => {
                 </div>
             </div>
 
-
-
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
-                <Select
+            <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
+                <select
                     name='local_id'
+                    className={styles.comboBox}
                     type='number'
-                    required
-                    options={local}
-                    value={local.ID}
-                    onChange={HandleOnSelect}
-                    getOptionLabel={(local) => `sala ${local.sala}, ${local.setor}` }
-                    getOptionValue={(local) => local.ID}
-                />
+                    onChange={HandleOnChange}
+                    required>
+                        {optionsLocais}
+                </select>
             </div>
 
             

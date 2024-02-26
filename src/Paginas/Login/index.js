@@ -13,17 +13,14 @@ const Login = () => {
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
     const navigate = useNavigate()
+    const [isAuthenticated, setisAuthenticated] = useState([false])
     
     const onLogin = async (event) => {
         event.preventDefault();
         try {
             setLoading(true)
-            // const responses = await axios.get('http://localhost:8080/relatorio_inscritos_por_atividade/1');
-            // console.log('response do Login', responses)
-            // const response = await UserService.login(form);
             const {response} = await axios.post('http://localhost:8080/login', form).catch(function (error) {
                 if (error.response) {
-        
                   window.alert(error.response.data.error);
                   console.log(error.response.status);
                   console.log(error.response.headers);
@@ -41,6 +38,8 @@ const Login = () => {
             if (response === undefined) {
               alert('usuário Logado com Sucesso')
               navigate('/eventos')
+              setisAuthenticated(true)
+              localStorage.setItem('isAuthenticated', true);
             }
             setLoading(false)
           }
