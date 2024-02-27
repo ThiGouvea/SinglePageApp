@@ -63,10 +63,9 @@ const EditarAtividade = () => {
 
             console.log(response)
             
-            if ( response === true ) {
-              alert('evento cadastrado')
-              navigate('/eventos')
-            }
+            if (response === undefined) {
+                alert('editado')
+              }
         }
 
         catch (err) {
@@ -86,6 +85,14 @@ const EditarAtividade = () => {
         setForm({...form, [event.name]: event.value})
     }
 
+    const optionsLocais = local.map((option) => 
+        <option key={option.ID} value={option.ID}>{`sala ${option.sala}, ${option.setor}`}</option>
+    );
+
+    const optionsTipoAtividade = conteudo.map((option) => 
+        <option key={option.ID} value={option.ID}>{option.nome}</option>
+    );
+
     return (
         <form className={styles.formulario}>
             <div className={styles.options}>
@@ -99,18 +106,15 @@ const EditarAtividade = () => {
 
             <div className={styles.options}>
             <h3 className={styles.nomesOptions} >Selecione um tipo de atividade</h3>
-                <Select
+                <select
+                    className={styles.comboBox}
                     name='tipo_atividade_id'
                     type='number'
-                    placeholder={conteudoPreencher.tipo_atividade_id}
-                    options={conteudo}
-                    value={conteudo.ID}
-                    onChange={HandleOnSelect}
-                    getOptionLabel={(conteudo) => conteudo.nome}
-                    getOptionValue={(conteudo) => conteudo.ID}
-                />
+                    onChange={HandleOnChange}
+                    required>
+                        {optionsTipoAtividade}
+                </select>
             </div>
-
 
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Insira o titulo</h3>
@@ -219,20 +223,16 @@ const EditarAtividade = () => {
                     onChange={HandleOnChange} />
             </div>
 
-         
-
             <div className={styles.options}>
-            <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
-                <Select
-                    name='local_id'
-                    type='number'
-                    required
-                    options={local}
-                    value={local.ID}
-                    onChange={HandleOnSelect}
-                    getOptionLabel={(local) => `sala ${local.sala}, ${local.setor}` }
-                    getOptionValue={(local) => local.ID}
-                />
+                <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
+                    <select 
+                        className={styles.comboBox}
+                        name='local_id'
+                        type='number'
+                        onChange={HandleOnChange}
+                        required>
+                            {optionsLocais}
+                    </select>
             </div>
             
             <button 

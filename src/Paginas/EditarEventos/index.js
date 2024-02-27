@@ -55,10 +55,9 @@ const EditarEvento = () => {
             });
             console.log(response.data)
             
-            if (response === true) {
-              alert('evento cadastrado')
-              navigate('/eventos')
-            }
+            if (response === undefined) {
+                alert('editado')
+              }
         }
 
         catch (err) {
@@ -77,6 +76,10 @@ const EditarEvento = () => {
     const HandleOnSelect = (event) => {
         setForm({...form, [event.name]: event.value})
     }
+
+    const optionsLocais = local.map((option) => 
+      <option key={option.ID} value={option.ID}>{`sala ${option.sala}, ${option.setor}`}</option>
+  );
     
     return (
         <form className={styles.formulario}>
@@ -126,20 +129,16 @@ const EditarEvento = () => {
                 </div>
             </div>
 
-
-
             <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
-                <Select
+            <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
+                <select
                     name='local_id'
-                    placeholder={conteudoPreencher.local_id}
+                    className={styles.comboBox}
                     type='number'
-                    options={local}
-                    value={local.ID}
-                    onChange={HandleOnSelect}
-                    getOptionLabel={(local) => `sala ${local.sala}, ${local.setor}` }
-                    getOptionValue={(local) => local.ID}
-                />
+                    onChange={HandleOnChange}
+                    required>
+                        {optionsLocais}
+                </select>
             </div>
 
             

@@ -19,6 +19,7 @@ const ListarAtividade = () => {
       async function deleteConteudo(ID) {
         const url = `http://localhost:8080/atividade/${ID}`
         axios.delete(url)
+        window.location.reload()
       }
 
       

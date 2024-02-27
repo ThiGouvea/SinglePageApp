@@ -26,6 +26,7 @@ const ListarInstituicao = () => {
     async function deleteConteudo(ID) {
       const url = `http://localhost:8080/instituicao/${ID}`;
       await axios.delete(url)
+      window.location.reload()
     }
     
     return (

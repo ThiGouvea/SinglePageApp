@@ -11,6 +11,7 @@ const api = axios.create({
 
 const Login = () => {
     const [loading, setLoading] = useState()
+    const [resposta, setResposta] = useState([])
     const [form, setForm] = useState([])
     const navigate = useNavigate()
     const [isAuthenticated, setisAuthenticated] = useState([false])
@@ -19,7 +20,7 @@ const Login = () => {
         event.preventDefault();
         try {
             setLoading(true)
-            const {response} = await axios.post('http://localhost:8080/login', form).catch(function (error) {
+            const response = await axios.post('http://localhost:8080/login', form).catch(function (error) {
                 if (error.response) {
                   window.alert(error.response.data.error);
                   console.log(error.response.status);
@@ -33,13 +34,16 @@ const Login = () => {
                 }
             })
 
-            console.log(response)
+            console.log(response.data)
             
-            if (response === undefined) {
+            if (response.data.data === "Voce está conectado") {
+              console.log(response)
               alert('usuário Logado com Sucesso')
-              navigate('/eventos')
               setisAuthenticated(true)
               localStorage.setItem('isAuthenticated', true);
+              localStorage.removeItem('adm')
+              navigate('/eventos')
+              window.location.reload()
             }
             setLoading(false)
           }

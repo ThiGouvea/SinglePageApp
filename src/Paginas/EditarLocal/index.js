@@ -34,10 +34,9 @@ const EditarLocal = () => {
 
             console.log(response)
             
-            if ( response === true ) {
-              alert('evento cadastrado')
-              navigate('/eventos')
-            }
+            if (response === undefined) {
+                alert('editado')
+              }
         }
 
         catch (err) {

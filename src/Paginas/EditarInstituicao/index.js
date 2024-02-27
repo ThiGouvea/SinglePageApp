@@ -50,10 +50,9 @@ const EditarInstituicao = () => {
 
             console.log(response)
             
-            if (response === true) {
-              alert('evento cadastrado')
-              navigate('/eventos')
-            }
+            if (response === undefined) {
+                alert('editado')
+              }
         }
 
         catch (err) {
@@ -72,6 +71,10 @@ const EditarInstituicao = () => {
     const HandleOnSelect = (event) => {
         setForm({...form, [event.name]: event.value})
     }
+
+    const options = cidade.map((option) => 
+    <option key={option.id} value={option.id}>{option.name}</option>
+    );
     
     return (
         <form className={styles.formulario}>
@@ -138,19 +141,16 @@ const EditarInstituicao = () => {
                     onChange={HandleOnChange} />
             </div>
 
-
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione uma Cidade</h3>
-                <Select
+                <select
+                    className={styles.comboBox}
                     name='cidade_id'
                     type='number'
-                    placeholder={conteudoPreencher.cidade_id}
-                    options={cidade}
-                    value={cidade.ID}
                     onChange={HandleOnSelect}
-                    getOptionLabel={(cidade) => cidade.name }
-                    getOptionValue={(cidade) => cidade.ID}
-                />
+                    required>
+                        {options}
+                    </select>
             </div>
 
             <button 

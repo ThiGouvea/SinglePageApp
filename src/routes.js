@@ -29,6 +29,7 @@ import EditarUsuario from 'Paginas/EditarUsuario';
 import CriarConta from 'Paginas/CriarConta';
 import PrivateRoute from "Componentes/PrivateRoute";
 import Private from "Componentes/PrivateRoute";
+import LoginADM from "Paginas/LoginADM";
 
 function AppRoutes() {
   const isAuthenticated = localStorage.getItem('isAuthenticated')
@@ -39,6 +40,7 @@ function AppRoutes() {
         <Route path="/" element={<PaginaPadrao />}>
           <Route index element={<Login />} />
           <Route path="login" element={<Login />} />
+          <Route path="loginADM" element={<LoginADM />} />
         </Route>
 
           <Route path="/eventos" element={<PaginaPadrao />}>

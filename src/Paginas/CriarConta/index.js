@@ -35,9 +35,9 @@ const CriarConta = () => {
         try {
             setLoading(true)
             form.tipo_usuario_id = parseInt(form.tipo_usuario_id)
-            // form.instituicao_id = parseInt(form.instituicao_id)
-            // form.cidadeid = parseInt(form.cidadeid)
-            form.tipo_usuario_id = 1;
+            form.instituicao_id = parseInt(form.instituicao_id)
+            form.cidadeid = parseInt(form.cidadeid)
+            form.tipo_usuario_id = 3;
             console.log(form)
             const {response} = await axios.post('http://localhost:8080/usuario/', form).catch(function (error) {
                 if (error.response) {
@@ -54,10 +54,9 @@ const CriarConta = () => {
 
             window.alert(response.ID)
             
-            if (response === true) {
-              alert('evento cadastrado')
-              navigate('/eventos')
-            }
+            if (response === undefined) {
+                alert('cadastrado')
+              }
         }
 
         catch (err) {
@@ -185,12 +184,9 @@ const CriarConta = () => {
                 <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Selecione a escolaridade</h3>
                     <select className={styles.comboBox} onChange={HandleOnChange} name="escolaridade" id="escolaridade">
-                        <option value="Fundamental_incompleto">Fundamental incompleto</option>
-                        <option value="Fundamental_completo">Fundamental completo</option>
-                        <option value="Medio_incompleto">Ensino medio incompleto</option>
-                        <option value="Medio_completo">Ensino medio completo</option>
-                        <option value="Superior_incompleto">Ensino superior incompleto</option>
-                        <option value="superior">Ensino superior completo</option>
+                        <option value="fundamental">Ensino fundamental</option>
+                        <option value="médio">Ensino medio</option>
+                        <option value="superior">Ensino superior</option>
                     </select>
                 </div>
 
@@ -222,7 +218,7 @@ const CriarConta = () => {
                 <h3 className={styles.nomesOptions} >Selecione uma Cidade</h3>
                 <select
                     className={styles.comboBox}
-                    name='cidade_id'
+                    name='cidadeid'
                     type='number'
                     onChange={HandleOnSelect}
                     required>

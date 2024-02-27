@@ -58,10 +58,9 @@ const CadastrarEventos = () => {
             });
             console.log(response.data)
             
-            if (response === true) {
-              alert('evento cadastrado')
-              navigate('/eventos')
-            }
+            if (response === undefined) {
+                alert('cadastrado')
+              }
         }
 
         catch (err) {
