@@ -42,6 +42,7 @@ const Login = () => {
               setisAuthenticated(true)
               localStorage.setItem('isAuthenticated', true);
               localStorage.removeItem('adm')
+              localStorage.setItem('idUsuario', response.data.usuario_id)
               navigate('/eventos')
               window.location.reload()
             }

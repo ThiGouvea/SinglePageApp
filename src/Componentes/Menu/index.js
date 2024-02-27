@@ -9,6 +9,7 @@ const Menu = () => {
     const logOut = () => {
         localStorage.removeItem('isAuthenticated')
         localStorage.removeItem('adm')
+        localStorage.removeItem('idUsuario')
         navigate('/login')
         window.location.reload()
         console.log('dsd')

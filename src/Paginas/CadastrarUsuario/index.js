@@ -40,9 +40,6 @@ const CadastrarUsuario = () => {
             form.instituicao_id = parseInt(form.instituicao_id)
             form.cidadeid = parseInt(form.cidadeid)
             console.log(form)
-            // const responses = await axios.get('http://localhost:8080/relatorio_inscritos_por_atividade/1');
-            // console.log('response do Login', responses)
-            // const response = await UserService.login(form);
             const {response} = await axios.post('http://localhost:8080/usuario/', form).catch(function (error) {
                 if (error.response) {
                   // The request was made and the server responded with a status code

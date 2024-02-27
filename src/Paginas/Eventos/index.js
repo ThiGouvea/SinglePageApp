@@ -1,7 +1,7 @@
 import styles from "./CadastrarAtividade.module.css"
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import BotaoEditar from "Componentes/BotaoEditar";
+import { useNavigate } from "react-router-dom";
 
 const api = axios.create({
   baseURL: 'http://localhost:8080'
@@ -9,23 +9,63 @@ const api = axios.create({
 
 const Eventos = () => {
     const [conteudo, setConteudo] = useState([])
+    const navigate = useNavigate()
+    const [formulario, setFormulario] = useState([])
+    const [loading, setLoading] = useState()
 
-    async function getConteudo() {
-        const url = "http://localhost:8080/evento/";
+    const inscrever = async (ID) => {
+        // event.preventDefault();
+        setFormulario({evento_id: ID, usuario_id: localStorage.getItem('idUsuario'), status: "ativo", data: "22/01/2024", hora: "08:08"})
+        formulario.usuario_id = parseInt(formulario.usuario_id)
+        console.log(formulario)
+        try {
+            setLoading(true)
+            console.log(formulario)
+            const {response} = await axios.post('http://localhost:8080/inscricaoEmEventos/', formulario).catch(function (error) {
+                if (error.response) {
+                  window.alert(error.response.data.MENSAGEM);
+                  window.alert(error.response.data.error);
+                  console.log(error.response.status);
+                  console.log(error.response.headers);
+                } else if (error.request) {
+                  console.log(error.request);
+                } else {
+                  console.log('Error', error.message);
+                }
+            });
+
+            if (response === undefined) {
+              alert('Inscrito')
+              localStorage.setItem(`evento${ID}`, true)
+            }
+        }
+
+        catch (err) {
+            alert('Algo deu errado com o Cadastro' + err)
+        }
+
+        finally {
+        setLoading(false)
+        }
+      };
+
+    async function getConteudo(link) {
+        const url = link;
         let response = await axios.get(url);
         return response.data;
       }
 
+    
+
     useEffect(() => {
-        getConteudo().then((data) => setConteudo(data))
+        getConteudo("http://localhost:8080/evento/").then((data) => setConteudo(data))
         console.log(conteudo) 
     }, [])
 
 
     
     return (
-      <div className={styles.formulario}>
-        
+      <div className={styles.formulario}>    
         <ul>
             {conteudo.map(conteudo => (
                 <li key={conteudo.ID}>
@@ -49,10 +89,22 @@ const Eventos = () => {
                     </h4>
                     <h4>
                       Hora fim: {conteudo.horaFim}
-                    </h4>   
-                    <BotaoEditar destino={"/eventos/"} IDDestino={`${conteudo.ID}`}>
-                      Se inscrever
-                    </BotaoEditar>         
+                    </h4> 
+                    {localStorage.getItem(`evento${conteudo.ID}`) ? (
+                        <button 
+                        className={styles.botaoPrincipal}
+                        onClick={() => navigate('/atividades')}
+                        >
+                        Cadastrar em Atividades
+                       </button>  
+                    ) : (
+                    <button 
+                        type="submit"
+                        className={styles.botaoPrincipal}
+                        onClick={() => inscrever(conteudo.ID)}
+                        >
+                        Se Inscrever
+                    </button>)}       
                 </li>
             ))}
         </ul>
