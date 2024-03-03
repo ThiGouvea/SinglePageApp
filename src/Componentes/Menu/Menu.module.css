@@ -1,0 +1,32 @@
+.navegacao {
+    height: 112px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+
+}
+
+.link {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: var(--cor-fonte-principal);
+    border: none;
+    cursor: pointer;
+}
+
+.linkDestacado {
+    text-decoration: underline;
+}
+
+@media (max-width: 744px) {
+    .navegacao {
+        height: 72px;
+    }
+}
