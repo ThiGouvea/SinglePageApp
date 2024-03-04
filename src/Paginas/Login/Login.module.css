@@ -19,9 +19,11 @@
 
 .nomesOptions {
     margin: 0;
-    font-size: 1rem;
-    margin-right: 2rem;
-    margin-bottom: -2rem;
+    font-size: 1.2rem;
+    margin-right: 13rem;
+    margin-bottom: -1.6rem;
+    margin-top: -2rem;
+    align-items: start;
 }
 
 .comboBox {

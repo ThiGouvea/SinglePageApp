@@ -67,6 +67,7 @@ const LoginADM = () => {
     }
     return (
         <form className={styles.login}>
+            <h3 className={styles.nomesOptions} >Email</h3>
             <Input 
                 name='email' 
                 type="email" 
@@ -74,6 +75,7 @@ const LoginADM = () => {
                 placeholder={"Insira seu email"} 
                 onChange={HandleOnChange} />
 
+            <h3 className={styles.nomesOptions} >Senha</h3>
             <Input Cadastrar
                 name='senha' 
                 type="password" 

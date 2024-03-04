@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import Select from 'react-select'
+import TextArea from "Componentes/TextArea";
 
 
 const api = axios.create({
@@ -100,6 +101,7 @@ const CadastrarEventos = () => {
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Insira o nome do evento</h3>
                 <Input 
+                    size='30'
                     name='nome' 
                     type="string" 
                     required 
@@ -109,7 +111,9 @@ const CadastrarEventos = () => {
 
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Insira a descrição do evento</h3>
-                <Input 
+                <TextArea      
+                    rows='8'
+                    cols='30'              
                     name='descricao' 
                     type="string" 
                     required 
@@ -138,18 +142,6 @@ const CadastrarEventos = () => {
                 </div>
             </div>
 
-            <div className={styles.options}>
-            <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
-                <select
-                    name='local_id'
-                    className={styles.comboBox}
-                    type='number'
-                    onChange={HandleOnChange}
-                    required>
-                        <option value="">Selecione</option>
-                        {optionsLocais}
-                </select>
-            </div>
 
             
             <div className={styles.optionsDupla}>
@@ -174,6 +166,18 @@ const CadastrarEventos = () => {
                 </div>
             </div>
             
+            <div className={styles.options}>
+            <h3 className={styles.nomesOptions} >Selecione uma Sala</h3>
+                <select
+                    name='local_id'
+                    className={styles.comboBox}
+                    type='number'
+                    onChange={HandleOnChange}
+                    required>
+                        <option value="">Selecione</option>
+                        {optionsLocais}
+                </select>
+            </div>
             <button 
                 type="submit"
                 onClick={onLogin}

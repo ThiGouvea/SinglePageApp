@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import Select from 'react-select'
+import TextArea from "Componentes/TextArea";
 
 const api = axios.create({
   baseURL: 'http://localhost:8080'
@@ -115,7 +116,9 @@ const CadastrarAtividade = () => {
 
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Resumo da atividade</h3>
-                <Input 
+                <TextArea
+                    rols='10'
+                    cols='30'
                     name='resumo' 
                     type="string" 
                     
@@ -173,8 +176,7 @@ const CadastrarAtividade = () => {
                 <h3 className={styles.nomesOptions} >Insira alguma observação</h3>
                 <Input 
                     name='observacao' 
-                    type="string" 
-                    
+                    type="string"
                     placeholder="Digite alguma observação"
                     onChange={HandleOnChange} />
             </div>
@@ -196,6 +198,7 @@ const CadastrarAtividade = () => {
                 <Input 
                     name='quantidade_vagas' 
                     type="number" 
+                    min='0'
                     required 
                     placeholder="Quantidade vagas"
                     onChange={HandleOnChange} />
@@ -217,6 +220,7 @@ const CadastrarAtividade = () => {
                 <Input 
                     name='carga_horaria' 
                     type="number"
+                    min='0'
                     placeholder="Carga horaria"
                     onChange={HandleOnChange} />
             </div>
