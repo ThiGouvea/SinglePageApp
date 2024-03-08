@@ -66,30 +66,33 @@ const Eventos = () => {
     
     return (
       <div className={styles.formulario}>    
-        <ul>
+        <ul className={styles.itemLista}>
             {conteudo.map(conteudo => (
-                <li key={conteudo.ID}>
-                    <h4>
-                      <b>Status: </b>{conteudo.status}
-                    </h4>
-                    <h4>
-                      Nome: {conteudo.nome}
-                    </h4>
-                    <h4>
-                      Descrição: {conteudo.descricao}
-                    </h4>
-                    <h4>
-                      Data inicio: {conteudo.data_inicio}
-                    </h4>
-                    <h4>
-                      Data final: {conteudo.data_final}
-                    </h4>
+                <li key={conteudo.ID} className={styles.post}>
+                    <div className={styles.nomeEvento}>
+                      {conteudo.nome}
+                    </div>
+                    <div className={styles.descricao}>
+                      Sobre o evento: {conteudo.descricao}
+                    </div>
+                    <div className={styles.dataHora}>
+                      <h4>
+                        Data inicio: {conteudo.data_inicio}
+                      </h4>
+                      <h4>
+                        Data final: {conteudo.data_final}
+                      </h4>
+                    </div>
+
+                    <div className={styles.dataHora}>
                     <h4>
                       Hora inicio: {conteudo.horaInicio}
                     </h4>
                     <h4>
                       Hora fim: {conteudo.horaFim}
                     </h4> 
+
+                    </div>
                     {localStorage.getItem(`evento${conteudo.ID}`) ? (
                         <button 
                         className={styles.botaoPrincipal}

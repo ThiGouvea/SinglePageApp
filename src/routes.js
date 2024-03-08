@@ -32,6 +32,7 @@ import Private from "Componentes/PrivateRoute";
 import LoginADM from "Paginas/LoginADM";
 import Atividades from "Paginas/Atividades";
 import PaginaInicial from "Paginas/PaginaInicial";
+import ListarEventoOff from "Paginas/EventosOff";
 
 function AppRoutes() {
   const ehADM = localStorage.getItem('adm')
@@ -44,6 +45,8 @@ function AppRoutes() {
           <Route index element={<PaginaInicial />} />
           <Route path="login" element={<Login />} />
           <Route path="loginADM" element={<LoginADM />} />
+          <Route path="eventos_off" element={<ListarEventoOff />} />
+          
         </Route>
 
         {ehADM && (

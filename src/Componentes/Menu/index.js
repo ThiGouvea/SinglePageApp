@@ -28,7 +28,7 @@ const Menu = () => {
                     Eventos
                     </MenuLink>
                 )}
-                {!ehADM && (
+                {(!ehADM && !taLogado) && (
                     <MenuLink to="/loginADM">
                     Organizador Eventos
                     </MenuLink>

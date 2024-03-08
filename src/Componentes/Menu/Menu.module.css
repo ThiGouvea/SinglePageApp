@@ -10,7 +10,12 @@
     display: flex;
     justify-content: space-around;
     align-items: baseline;
+}
 
+.headerAzul {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
 }
 
 .link {

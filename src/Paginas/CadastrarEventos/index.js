@@ -35,9 +35,7 @@ const CadastrarEventos = () => {
         try {
             setLoading(true)
             form.local_id = parseInt(form.local_id);
-            // const responses = await axios.get('http://localhost:8080/relatorio_inscritos_por_atividade/1');
-            // console.log('response do Login', responses)
-            // const response = await UserService.login(form);
+            setForm({...form, ["status"]: "ativo"})
 
             console.log(form)
             const {response} = await axios.post('http://localhost:8080/evento/', form).catch(function (error) {
@@ -65,7 +63,7 @@ const CadastrarEventos = () => {
         }
 
         catch (err) {
-            alert('Algo deu errado com o Cadastro' + err)
+            console.log('Algo deu errado com o Cadastro' + err)
         }
 
         finally {
@@ -80,24 +78,9 @@ const CadastrarEventos = () => {
     const HandleOnChange = (event) => {
         setForm({...form, [event.target.name]: event.target.value})
     }
-
-    const HandleOnSelect = (event) => {
-        setForm({...form, [event.name]: event.value})
-    }
-
-
     
     return (
         <form className={styles.formulario}>
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Selecione o status</h3>
-                <select className={styles.comboBox} onChange={HandleOnChange} defaultValue={"ativo"} name="status" id="status">
-                    <option value="">Selecione</option>
-                    <option value="ativo">Ativo</option>
-                    <option value="inativo">Inativo</option>
-                </select>
-            </div>
-
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Insira o nome do evento</h3>
                 <Input 

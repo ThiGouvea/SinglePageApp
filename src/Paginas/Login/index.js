@@ -22,7 +22,7 @@ const Login = () => {
             setLoading(true)
             const response = await axios.post('http://localhost:8080/login', form).catch(function (error) {
                 if (error.response) {
-                  window.alert(error.response.data.error);
+                  alert(error.response.data.error);
                   console.log(error.response.status);
                   console.log(error.response.headers);
                 } else if (error.request) {
@@ -38,7 +38,7 @@ const Login = () => {
             
             if (response.data.data === "Voce está conectado") {
               console.log(response)
-              alert('usuário Logado com Sucesso')
+              // alert('usuário Logado com Sucesso')
               setisAuthenticated(true)
               localStorage.setItem('isAuthenticated', true);
               localStorage.removeItem('adm')
@@ -49,7 +49,7 @@ const Login = () => {
             setLoading(false)
           }
           catch (err) {
-            alert('Algo deu errado com o Login' + err)
+            console.log('Algo deu errado com o Login' + err)
           }
           
       };
