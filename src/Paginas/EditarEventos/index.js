@@ -73,10 +73,6 @@ const EditarEvento = () => {
         setForm({...form, [event.target.name]: event.target.value})
     }
 
-    const HandleOnSelect = (event) => {
-        setForm({...form, [event.name]: event.value})
-    }
-
     const optionsLocais = local.map((option) => 
       <option key={option.ID} value={option.ID}>{`sala ${option.sala}, ${option.setor}`}</option>
   );

@@ -37,8 +37,6 @@ const Login = () => {
             console.log(response.data)
             
             if (response.data.data === "Voce está conectado") {
-              console.log(response)
-              // alert('usuário Logado com Sucesso')
               setisAuthenticated(true)
               localStorage.setItem('isAuthenticated', true);
               localStorage.removeItem('adm')
@@ -97,3 +95,5 @@ const Login = () => {
 }
 
 export default Login
+
+

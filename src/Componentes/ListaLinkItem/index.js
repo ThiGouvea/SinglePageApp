@@ -9,9 +9,7 @@ const ListaLinkItem = ({local, textoLink}) => {
                 <h2 className={styles.titulo}>
                     {local.titulo}
                 </h2>
-
                 <BotaoPrincipal>{textoLink}</BotaoPrincipal>
-
             </div>
         </Link>
     )

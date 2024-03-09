@@ -85,6 +85,17 @@ function AppRoutes() {
         </Route>
         )}
 
+        {ehADM && (
+        <Route path="/editar" element={<PaginaPadrao />}>
+          <Route index element={<Listagens />} />
+          <Route path="editar_atividade/:id" element={<EditarAtividade />} />
+          <Route path="editar_evento/:id" element={<EditarEvento />} />
+          <Route path="editar_instituicao/:id" element={<EditarInstituicao />} />
+          <Route path="editar_local/:id" element={<EditarLocal />} />
+          <Route path="editar_usuario/:id" element={<EditarUsuario />} /> 
+        </Route>
+        )}
+
         
       
         {ehUsuario && (

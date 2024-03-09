@@ -71,7 +71,7 @@ const Menu = () => {
             {!taLogado && (
                 <nav className={styles.navegacao}>
                     <MenuLink to="/login">
-                        Login
+                        Login / Criar conta
                     </MenuLink>
                 </nav>
             )}
