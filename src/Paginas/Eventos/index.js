@@ -36,11 +36,12 @@ const Eventos = () => {
             });
 
             if (response === undefined) {
-              alert('Inscrito')
               localStorage.setItem(`evento${ID}`, true)
+              alert('Inscrito')
+              
+
             }
         }
-
 
         finally {
         setLoading(false)
