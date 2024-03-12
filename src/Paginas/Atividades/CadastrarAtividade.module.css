@@ -1,11 +1,12 @@
 .formulario {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: flex-start;
     margin-top: 2rem;
     margin-bottom: 4rem;
-    margin-left: 60vh;
+    /* margin-left: 40vh; */
+
 }
 
 .options {
@@ -72,4 +73,28 @@
     color: var(--branco);
     border: 3px solid var(--azul-medio);
     transition: 0.2s
+}
+
+.nomeEvento {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post {
+    text-align: center;
+    width: 80vh;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 0px 0px 10px 10px;
+    padding: 1rem;
+    transition: transform .2s;
+}
+
+.itemLista {
+    width: 100vh;
+}
+
+.descricao {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }

@@ -15,38 +15,40 @@ const Atividades = () => {
 
     const inscrever = async (ID) => {
         // event.preventDefault();
-        setFormulario({atividade_id: ID,evento_id: 2, usuario_id: localStorage.getItem('idUsuario'), status: "confirmada",controle_presenca_id: 1, data: "22/04/2024", hora: "08:08"})
+        setFormulario({atividade_id: ID, evento_id: 2, usuario_id: localStorage.getItem('idUsuario'), status: "confirmada",controle_presenca_id: 1, data: "22/04/2024", hora: "08:08"})
         formulario.usuario_id = parseInt(formulario.usuario_id)
+        alert('inscrito')
         console.log(formulario)
-        try {
-            setLoading(true)
-            console.log(formulario)
-            const {response} = await axios.post('http://localhost:8080/inscricaoEmAtividades/', formulario).catch(function (error) {
-                if (error.response) {
-                  window.alert(error.response.data.MENSAGEM);
-                  window.alert(error.response.data.error);
-                  console.log(error.response.status);
-                  console.log(error.response.headers);
-                } else if (error.request) {
-                  console.log(error.request);
-                } else {
-                  console.log('Error', error.message);
-                }
-            });
+        localStorage.setItem(`atividade${ID}`, true)
+        // try {
+        //     setLoading(true)
+        //     console.log(formulario)
+        //     const {response} = await axios.post('http://localhost:8080/inscricaoEmAtividades/', formulario).catch(function (error) {
+        //         if (error.response) {
+        //           console.log(error.response.data.MENSAGEM);
+        //           console.log(error.response.data.error);
+        //           console.log(error.response.status);
+        //           console.log(error.response.headers);
+        //         } else if (error.request) {
+        //           console.log(error.request);
+        //         } else {
+        //           console.log('Error', error.message);
+        //         }
+        //     });
 
-            if (response === undefined) {
-              alert('Inscrito')
-              localStorage.setItem(`atividae${ID}`, true)
-            }
-        }
+        //     if (response === undefined) {
+        //       alert('Inscrito')
+        //       localStorage.setItem(`atividae${ID}`, true)
+        //     }
+        // }
 
-        catch (err) {
-            alert('Algo deu errado com o Cadastro' + err)
-        }
+        // catch (err) {
+        //     console.log('Algo deu errado com o Cadastro' + err)
+        // }
 
-        finally {
-        setLoading(false)
-        }
+        // finally {
+        // setLoading(false)
+        // }
       };
 
     async function getConteudo(link) {
@@ -69,13 +71,13 @@ const Atividades = () => {
       <div className={styles.formulario}>    
         <ul>
         {conteudo.map(conteudo => (
-                <li key={conteudo.ID} className="nomesOptions">
-                    <h4>
+                <li key={conteudo.ID} className={styles.post}>
+                    <div className={styles.nomeEvento}>
                       Titulo: {conteudo.titulo}
-                    </h4>
-                    <h4>
+                    </div>
+                    <div className={styles.descricao}>
                       Resumo: {conteudo.resumo}
-                    </h4>
+                    </div>
                     <h4>
                       Data: {conteudo.data}
                     </h4>
@@ -95,15 +97,11 @@ const Atividades = () => {
                       Quantidade de vagas: {conteudo.quantidade_vagas}
                     </h4>
                     <h4>
-                      Duração: {conteudo.duracao}hrs
+                      Duração: {conteudo.duracao} hrs
                     </h4>  
                     <h4>
-                      Cargar horaria: {conteudo.carga_horaria}hrs
+                      Cargar horaria: {conteudo.carga_horaria} hrs
                     </h4> 
-                    <h4>
-                      local: {1}
-                    </h4>  
-
                     {localStorage.getItem(`atividade${conteudo.ID}`) ? (
                         <button 
                         className={styles.botaoPrincipal}

@@ -1,7 +1,6 @@
 import styles from "./CadastrarAtividade.module.css"
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import ListaLinkItem from "Componentes/ListaLinkItem";
 import BotaoEditar from "Componentes/BotaoEditar";
 
 const api = axios.create({

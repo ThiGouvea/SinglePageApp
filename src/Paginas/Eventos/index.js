@@ -17,12 +17,12 @@ const Eventos = () => {
   const [loading, setLoading] = useState()
 
     const inscrever = async (ID) => {
+      try {
         setFormulario({evento_id: ID, usuario_id: idUsuario, status: "ativo", data: "22/01/2024", hora: "08:08"})
         formulario.usuario_id = parseInt(formulario.usuario_id)
         console.log(formulario)
-        try {
             setLoading(true)
-            const {response} = await axios.post('http://localhost:8080/inscricaoEmEventos/', formulario).catch(function (error) {
+            const response = await axios.post('http://localhost:8080/inscricaoEmEventos/', formulario).catch(function (error) {
                 if (error.response) {
                   console.log(error.response.data.MENSAGEM);
                   console.log(error.response.data.error);

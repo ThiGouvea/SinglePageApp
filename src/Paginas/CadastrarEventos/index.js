@@ -3,7 +3,6 @@ import styles from "./CadastrarEventos.module.css"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import Select from 'react-select'
 import TextArea from "Componentes/TextArea";
 
 
@@ -31,33 +30,29 @@ const CadastrarEventos = () => {
     
     
     const onLogin = async (event) => {
-        event.preventDefault();
         try {
+            event.preventDefault();
             setLoading(true)
             form.local_id = parseInt(form.local_id);
             setForm({...form, ["status"]: "ativo"})
+            // console.log(form)
 
-            console.log(form)
-            const {response} = await axios.post('http://localhost:8080/evento/', form).catch(function (error) {
+            const response = await axios.post('http://localhost:8080/evento/', form).catch(function (error) {
                 if (error.response) {
-                  // The request was made and the server responded with a status code
-                  // that falls out of the range of 2xx
                   window.alert(error.response.data.error);
                   console.log(error.response.status);
                   console.log(error.response.headers);
                 } else if (error.request) {
-                  // The request was made but no response was received
-                  // `error.request` is an instance of XMLHttpRequest in the browser 
-                  // and an instance of http.ClientRequest in node.js
                   console.log(error.request);
                 } else {
-                  // Something happened in setting up the request that triggered an Error
                   console.log('Error', error.message);
                 }
             });
             console.log(response.data)
+            console.log(response.status)
+            alert('cadastrado')
             
-            if (response === undefined) {
+            if (response == undefined) {
                 alert('cadastrado')
               }
         }
@@ -68,6 +63,7 @@ const CadastrarEventos = () => {
 
         finally {
         setLoading(false)
+        
         }
       };
 
