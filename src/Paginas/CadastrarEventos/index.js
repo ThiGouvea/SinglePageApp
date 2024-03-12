@@ -15,7 +15,7 @@ const api = axios.create({
 const CadastrarEventos = () => {
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
-    const navigate = useNavigate()
+    const navegar = useNavigate()
     const [local, setLocal] = useState([])
 
     async function getConteudo(links) {
@@ -161,13 +161,22 @@ const CadastrarEventos = () => {
                         {optionsLocais}
                 </select>
             </div>
-            <button 
-                type="submit"
-                onClick={onLogin}
-                className={styles.submit}
-                text='Entrar'
-                >Cadastrar
-            </button>
+            <div className={styles.optionsDupla}>
+                <button 
+                    type="submit"
+                    onClick={onLogin}
+                    className={styles.submit}
+                    text='Entrar'
+                    >Cadastrar
+                </button>
+                <button 
+                    type="submit"
+                    onClick={() => navegar(-1)}
+                    className={styles.submit}
+                    text='Entrar'
+                    >Voltar
+                </button>
+            </div>
         </form>
     )
 }

@@ -30,6 +30,9 @@ const Banner = () => {
                 endereco.pathname == '/eventos_off' && (
                     'Boas vindas aos eventos, para se inscrever deve primeiro fazer login'
                 ) ||
+                endereco.pathname == '/criar_conta' && (
+                        'Digite os dados para criar uma conta de usuario'
+                ) ||
                 endereco.pathname != '/' && (
                         'Boas vindas aos eventos'
                     )}

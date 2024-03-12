@@ -39,9 +39,6 @@ const Menu = () => {
                     <MenuLink to="/cadastro">
                         Cadastrar
                     </MenuLink>
-                    <MenuLink to="/inscricao">
-                        Inscrições
-                    </MenuLink>
                     <MenuLink to="/listar">
                         Listar
                     </MenuLink>

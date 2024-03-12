@@ -13,15 +13,14 @@ const api = axios.create({
 });
 
 const CadastrarUsuario = () => {
+    
     const navegar = useNavigate()
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
     const [tipoUsuario, setTipoUsuario] = useState([])
     const [instituicao, setiInstituicao] = useState([])
     const cidade = Cidades
-    const navigate = useNavigate()
-    
-    
+
 
     async function getConteudo(links) {
         const url = links;
@@ -38,6 +37,7 @@ const CadastrarUsuario = () => {
         event.preventDefault();
         try {
             setLoading(true)
+            setForm({...form, ["status"]: "ativo"})
             form.tipo_usuario_id = parseInt(form.tipo_usuario_id)
             form.instituicao_id = parseInt(form.instituicao_id)
             form.cidadeid = parseInt(form.cidadeid)
@@ -93,15 +93,6 @@ const CadastrarUsuario = () => {
     
     return (
         <form className={styles.formulario}>
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Selecione o status</h3>
-                <select className={styles.comboBox} onChange={HandleOnChange} name="status" id="status">
-                    <option value="">Selecione</option>
-                    <option value="ativo">Ativo</option>
-                    <option value="inativo">Inativo</option>
-                </select>
-            </div>
-
             <div className={styles.options}>
                 <h3 className={styles.nomesOptions} >Insira o nome de usuario</h3>
                 <Input 
@@ -246,8 +237,6 @@ const CadastrarUsuario = () => {
             </div>
 
             <div className={styles.optionsDupla}>
-
-
                 <button 
                     type="submit"
                     onClick={onLogin}
@@ -255,12 +244,13 @@ const CadastrarUsuario = () => {
                     text='Entrar'
                     >Cadastrar
                 </button>
-                <div 
-                    className={styles.botaoContainer}
+                <button 
+                    type="submit"
                     onClick={() => navegar(-1)}
-                    >
-                        <BotaoPrincipal tamanho="lg">Voltar</BotaoPrincipal>
-                </div>
+                    className={styles.submit}
+                    text='Entrar'
+                    >Voltar
+                </button>
             </div>
         </form>
     )

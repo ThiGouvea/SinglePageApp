@@ -69,7 +69,7 @@ const EditarAtividade = () => {
         }
 
         catch (err) {
-            alert('Algo deu errado com o Cadastro' + err)
+            console.log('Algo deu errado com o Cadastro' + err)
         }
 
         finally {

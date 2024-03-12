@@ -27,7 +27,9 @@ const ListarLocal = () => {
     async function deleteConteudo(ID) {
       const url = `http://localhost:8080/local/${ID}`;
       axios.delete(url)
+      alert('Deletado')
       window.location.reload()
+      
       
     }
     

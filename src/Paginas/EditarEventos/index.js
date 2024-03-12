@@ -3,7 +3,6 @@ import styles from "./CadastrarEventos.module.css"
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import Select from 'react-select'
 
 
 const api = axios.create({

@@ -81,7 +81,6 @@ const Login = () => {
                   text='Entrar'
                   >Entrar
               </button>
-
               <button 
                   type="submit"
                   onClick={() => navigate("/criar_conta")}

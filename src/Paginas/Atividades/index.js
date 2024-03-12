@@ -8,13 +8,14 @@ const api = axios.create({
 
 const Atividades = () => {
     const [conteudo, setConteudo] = useState([])
+    const [locais, setLocais] = useState([])
 
     const [formulario, setFormulario] = useState([])
     const [loading, setLoading] = useState()
 
     const inscrever = async (ID) => {
         // event.preventDefault();
-        setFormulario({atividade_id: ID,evento_id: 1, usuario_id: localStorage.getItem('idUsuario'), status: "confirmada",controle_presenca_id: 1, data: "22/04/2024", hora: "08:08"})
+        setFormulario({atividade_id: ID,evento_id: 2, usuario_id: localStorage.getItem('idUsuario'), status: "confirmada",controle_presenca_id: 1, data: "22/04/2024", hora: "08:08"})
         formulario.usuario_id = parseInt(formulario.usuario_id)
         console.log(formulario)
         try {
@@ -58,7 +59,8 @@ const Atividades = () => {
 
     useEffect(() => {
         getConteudo("http://localhost:8080/atividade/").then((data) => setConteudo(data))
-        console.log(conteudo) 
+        getConteudo("http://localhost:8080/local/").then((data) => setLocais(data))
+        // console.log(conteudo) 
     }, [])
 
 
@@ -68,12 +70,6 @@ const Atividades = () => {
         <ul>
         {conteudo.map(conteudo => (
                 <li key={conteudo.ID} className="nomesOptions">
-                    <h4>
-                      <b>Status: </b>{conteudo.status}
-                    </h4>
-                    <h4>
-                      Id tipo de atividade: {conteudo.tipo_atividade_id}
-                    </h4>
                     <h4>
                       Titulo: {conteudo.titulo}
                     </h4>
@@ -105,7 +101,7 @@ const Atividades = () => {
                       Cargar horaria: {conteudo.carga_horaria}hrs
                     </h4> 
                     <h4>
-                      Id local: {conteudo.local_id}
+                      local: {1}
                     </h4>  
 
                     {localStorage.getItem(`atividade${conteudo.ID}`) ? (

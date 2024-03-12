@@ -46,7 +46,7 @@ function AppRoutes() {
           <Route path="login" element={<Login />} />
           <Route path="loginADM" element={<LoginADM />} />
           <Route path="eventos_off" element={<ListarEventoOff />} />
-          
+          <Route path='/criar_conta' element={<CriarConta />} />          
         </Route>
 
         {ehADM && (
@@ -63,7 +63,7 @@ function AppRoutes() {
         
         <Route path="/atividades" element={<PaginaPadrao />}>
           <Route index element={<Atividades />} />
-          <Route path=":id" element={<EditarEvento />} />    
+          <Route path=":id" element={<Atividades />} />    
         </Route>
 
         {ehADM && (
@@ -106,7 +106,7 @@ function AppRoutes() {
         )}
         
         <Route path="*" element={<NaoEncontrada />} />
-        <Route path='/criar_conta' element={<CriarConta />} />
+        
       </Routes>
       <Rodape />
     </BrowserRouter>

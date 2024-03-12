@@ -1,5 +1,5 @@
 import styles from "./CadastrarAtividade.module.css"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
@@ -8,14 +8,16 @@ const api = axios.create({
 });
 
 const Eventos = () => {
-    const [conteudo, setConteudo] = useState([])
-    const navigate = useNavigate()
-    const [formulario, setFormulario] = useState([])
-    const [loading, setLoading] = useState()
+  const [dataLoaded,  setDataLoaded] = useState(false);
+  const [idUsuario, setIdUsuario] = useState()
+  const [conteudo, setConteudo] = useState([])
+  const [idsEventos, setIdsEventos] = useState([])
+  const navigate = useNavigate()
+  const [formulario, setFormulario] = useState([])
+  const [loading, setLoading] = useState()
 
     const inscrever = async (ID) => {
-        setFormulario([])
-        setFormulario({evento_id: ID, usuario_id: localStorage.getItem('idUsuario'), status: "ativo", data: "22/01/2024", hora: "08:08"})
+        setFormulario({evento_id: ID, usuario_id: idUsuario, status: "ativo", data: "22/01/2024", hora: "08:08"})
         formulario.usuario_id = parseInt(formulario.usuario_id)
         console.log(formulario)
         try {
@@ -39,9 +41,6 @@ const Eventos = () => {
             }
         }
 
-        catch (err) {
-            alert('Algo deu errado com o Cadastro')
-        }
 
         finally {
         setLoading(false)
@@ -54,16 +53,58 @@ const Eventos = () => {
         return response.data;
       }
 
-    
-
-    useEffect(() => {
+      function mapEveventos(ids) {
+        ids.map(e => (localStorage.setItem(`evento${e.ID}`, true)))
+        console.log(ids)
+      }
+      
+      const getData = () => {
+        setDataLoaded(false)
         getConteudo("http://localhost:8080/evento/").then((data) => setConteudo(data))
-        console.log(conteudo) 
-    }, [])
+        console.log(idsEventos)
+        getConteudo(`http://localhost:8080/evento/usuario/${localStorage.getItem('idUsuario')}`)
+          .then((data) => setIdsEventos(data))
+        setIdUsuario(localStorage.getItem('idUsuario'))
+        mapEveventos(idsEventos)
+        setDataLoaded(true)
+      }
 
+      const irParaAtividade = (eventoID) => {
+        navigate(`/atividades/${eventoID}`)
+      }
 
+ 
+    useEffect(() => {
+      setIdUsuario(localStorage.getItem('idUsuario'))
+
+        getConteudo("http://localhost:8080/evento/").then((data) => setConteudo(data))
+        getConteudo(`http://localhost:8080/evento/usuario/${localStorage.getItem('idUsuario')}`).then((data) => setIdsEventos(data))
+        console.log(idsEventos)
+        mapEveventos(idsEventos)
+      
+    }, []);
+    
+       
     
     return (
+      <>
+      {!dataLoaded ?  (
+      <div className={styles.optionsDupla}>
+        <button 
+            type="submit"
+            className={styles.botaoPrincipal}
+            onClick={getData}
+            >
+            Visualizar Eventos
+        </button>
+        <button 
+            type="submit"
+            className={styles.botaoPrincipal}
+            onClick={() => navigate(-1)}
+            >
+            Voltar
+        </button>
+      </div>) : (
       <div className={styles.formulario}>    
         <ul className={styles.itemLista}>
             {conteudo.map(conteudo => (
@@ -95,7 +136,7 @@ const Eventos = () => {
                     {localStorage.getItem(`evento${conteudo.ID}`) ? (
                         <button 
                         className={styles.botaoPrincipal}
-                        onClick={() => navigate('/atividades')}
+                        onClick={() =>irParaAtividade(conteudo.ID)}
                         >
                         Cadastrar em Atividades
                        </button>  
@@ -104,14 +145,16 @@ const Eventos = () => {
                         type="submit"
                         className={styles.botaoPrincipal}
                         onClick={() => inscrever(conteudo.ID)}
+                        disabled={!dataLoaded}
                         >
                         Se Inscrever
                     </button>)}       
                 </li>
             ))}
         </ul>
-
       </div>
+      )}
+      </>
       
     )
 }

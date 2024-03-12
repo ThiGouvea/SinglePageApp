@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Select from 'react-select'
 import TextArea from "Componentes/TextArea";
+import BotaoPrincipal from "Componentes/BotaoPrincipal";
 
 const api = axios.create({
   baseURL: 'http://localhost:8080'
@@ -13,7 +14,7 @@ const api = axios.create({
 const CadastrarAtividade = () => {
     const [loading, setLoading] = useState()
     const [form, setForm] = useState([])
-    const navigate = useNavigate()
+    const navegar = useNavigate()
     const [conteudo, setConteudo] = useState([])
     const [local, setLocal] = useState([])
 
@@ -33,6 +34,7 @@ const CadastrarAtividade = () => {
         event.preventDefault();
         try {
             setLoading(true)
+            setForm({...form, ["status"]: "ativo"})
             form.tipo_atividade_id = parseInt(form.tipo_atividade_id)
             form.valor_inscricao = parseInt(form.valor_inscricao);
             form.local_id = parseInt(form.local_id);
@@ -82,15 +84,6 @@ const CadastrarAtividade = () => {
 
     return (
         <form className={styles.formulario}>
-            <div className={styles.options}>
-                <h3 className={styles.nomesOptions} >Selecione o status</h3>
-                <select className={styles.comboBox} onChange={HandleOnChange} name="status" id="status">
-                    <option value="">Selecione</option>
-                    <option value="ativo">Ativo</option>
-                    <option value="inativo">Inativo</option>
-                </select>
-            </div>
-
             <div className={styles.options}>
             <h3 className={styles.nomesOptions} >Selecione um tipo de atividade</h3>
                 <select
@@ -240,13 +233,22 @@ const CadastrarAtividade = () => {
                         </select>
             </div>
             
-            <button 
-                type="submit"
-                onClick={onLogin}
-                className={styles.submit}
-                text='Entrar'
-                >Cadastrar
-            </button>
+            <div className={styles.optionsDupla}>
+                <button 
+                    type="submit"
+                    onClick={onLogin}
+                    className={styles.submit}
+                    text='Entrar'
+                    >Cadastrar
+                </button>
+                <button 
+                    type="submit"
+                    onClick={() => navegar(-1)}
+                    className={styles.submit}
+                    text='Entrar'
+                    >Voltar
+                </button>
+            </div>
         </form>
     )
 }

@@ -42,12 +42,11 @@ const LoginADM = () => {
             })
             
             if (response.data.data === "Voce está conectado") {
-              console.log(response.data.tipo_usuario)
               if (response.data.tipo_usuario == 1) {
-                alert('usuário logado com sucesso')
                 setisAuthenticated(true)
                 localStorage.setItem('adm', true)
                 localStorage.setItem('isAuthenticated', true)
+                localStorage.setItem('idUsuario', response.data.usuario_id)
                 navigate("/")
                 window.location.reload()
               } else if (response.data.tipo_usuario == 2) {

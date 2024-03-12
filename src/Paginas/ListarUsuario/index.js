@@ -20,6 +20,7 @@ const ListarUsuario = () => {
     async function deleteConteudo(ID) {
       const url = `http://localhost:8080/usuario/${ID}`;
       await axios.delete(url);
+      alert('Usuario Deletado')
       window.location.reload()
     }
 

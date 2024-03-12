@@ -49,5 +49,6 @@
     background-color: var(--azul-medio);
     color: var(--branco);
     border: 3px solid var(--azul-medio);
-    transition: 0.2s
+    transition: 0.2s;
+    margin-top: 1rem;
 }
